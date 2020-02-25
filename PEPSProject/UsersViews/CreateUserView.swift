@@ -19,7 +19,7 @@ struct CreateUserView: View {
             
             TextField("Pseudo...", text: $pseudo).padding().background(Color.gray).cornerRadius(20.0)
             TextField("Password ...", text: $password).padding().background(Color.gray).cornerRadius(20.0)
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {}) {
             Text("Create")
             }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15)
             

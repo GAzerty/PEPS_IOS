@@ -9,8 +9,29 @@
 import SwiftUI
 
 struct ReadUserView: View {
+    
+    var user: User!
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack{
+            //Image("photo-profil").clipShape(Circle())
+            Text("Infos Personnelles:").padding()
+            //Text("Pseudo: "+user!.pseudo)
+            
+            
+            HStack{
+                Button(action: {}) {
+                Text("Modifier")
+                    }.padding()
+                Button(action: {}) {
+                Text("Supprimer")
+                }.padding().foregroundColor(.red)
+            }
+            
+            Text("Mes Posts:").padding()
+            //ListRemarksView(user)
+        }
     }
 }
 
