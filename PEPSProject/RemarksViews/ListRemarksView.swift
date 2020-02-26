@@ -9,13 +9,21 @@
 import SwiftUI
 
 struct ListRemarksView: View {
+    
+    var remarkSet : RemarkSet = RemarkSet()
+    
     var body: some View {
-        
         
         VStack{
             //NavBarView()
             //SearchView()
-            Text("ListRemarksView")
+            Text("\(remarkSet.remarkSet.count)")
+            List(self.remarkSet.remarkSet) {
+                remark in VStack{
+                    RemarkRowView(remark: remark)
+                    Text("hi")
+                }
+            }
         }
     }
 }

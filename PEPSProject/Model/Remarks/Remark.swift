@@ -8,19 +8,18 @@
 
 import Foundation
 
-class Remark{
+class Remark : Identifiable{
     
     var idRemark: Int
     var remark: String
     var category: Int
     var user: User
-    var date: Date
+    //var date: Date
     
-    init(idRemark: Int, remark: String, idCategory: Int, user: User, date: Date){
+    init(idRemark: Int, remark: String, idCategory: Int, user: User){
         self.idRemark = idRemark
         self.remark = remark
         self.category = idCategory
         self.user = user
-        self.date = date
     }
 }
