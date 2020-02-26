@@ -14,6 +14,7 @@ class Remark : Identifiable{
     var remark: String
     var category: Int
     var user: User
+    //var answerSet: AnswerSet
     //var date: Date
     
     init(idRemark: Int, remark: String, idCategory: Int, user: User){

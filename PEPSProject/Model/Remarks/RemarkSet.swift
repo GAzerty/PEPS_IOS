@@ -23,7 +23,6 @@ class RemarkSet: ObservableObject {
     func getAllRemarks(){
         if let urlAPI = URL(string: "https://web-ios-api.herokuapp.com/remarks"){
              print(urlAPI)
-        
              URLSession.shared.dataTask(with: urlAPI) { data, response, error in
                  if let data = data {
                      
@@ -36,9 +35,9 @@ class RemarkSet: ObservableObject {
                              
                              //On recupere "data" comme un tableau de type Any
                              if let dataT = dictionnaryData["data"] as? [Any]{
+                                DispatchQueue.main.async {
                                  for remark in dataT{
                                      if let newRemark = remark as? [String:Any]{
-                                         //print(newUser)
                                         let idRemark = newRemark["idRemark"] as! Int
                                         let remark = newRemark["remark"] as! String
                                         let idCategory = newRemark["idCategory"] as! Int
@@ -46,15 +45,17 @@ class RemarkSet: ObservableObject {
                                         
                                         let u = User(idUser: idUser)
                                         let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u)
-                                        print(r)
+                                        
                                         self.remarkSet.append(r)
-                                     }
+                                    }
                                  }
+                                }
                              }
                          }
                      }
                  }
              }.resume()
+            
          }
     }
     

@@ -19,7 +19,8 @@ class User{
     func getById(idUser: Int){
         if let urlAPI = URL(string: "https://web-ios-api.herokuapp.com/users/"+String(idUser)){
              print(urlAPI)
-        
+            let group = DispatchGroup()
+            group.enter()
              URLSession.shared.dataTask(with: urlAPI) { data, response, error in
                  if let data = data {
                      
@@ -27,7 +28,7 @@ class User{
                          //print(jsonObj)
                          
                          if let dictionnaryData = jsonObj as? [String:Any]{
-                             print(dictionnaryData)
+                             //print(dictionnaryData)
                              //print(dictionnaryData["data"] as! [Any])
                              
                              //On recupere "data" comme un tableau de type Any
@@ -41,11 +42,13 @@ class User{
                                         self.pseudo = (newUser["pseudo"] as! String)
                                      }
                                  }
+                                group.leave()
                              }
                          }
                      }
                  }
              }.resume()
+            group.wait()
          }
     }
     

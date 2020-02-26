@@ -10,22 +10,23 @@ import SwiftUI
 
 struct ListRemarksView: View {
     
-    var remarkSet : RemarkSet = RemarkSet()
+    @ObservedObject var remarkSet : RemarkSet = RemarkSet()
     
     var body: some View {
-        
-        VStack{
-            //NavBarView()
-            //SearchView()
-            Text("\(remarkSet.remarkSet.count)")
-            List(self.remarkSet.remarkSet) {
-                remark in VStack{
-                    RemarkRowView(remark: remark)
-                    Text("hi")
+        NavigationView{
+            VStack{
+                //NavBarView()
+                //SearchView()
+                List(self.remarkSet.remarkSet) {
+                    remark in VStack{
+                        RemarkRowView(remark: remark)
+                    }
                 }
             }
+        .navigationBarTitle("Remarks")
         }
     }
+    
 }
 
 struct ListRemarksView_Previews: PreviewProvider {
