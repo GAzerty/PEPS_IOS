@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CreateUserView: View {
     
+    @Binding var isPresented : Bool
+    @State private var showingAlert = false
     @State private var pseudo: String = ""
     @State private var password: String = ""
     
@@ -18,18 +20,38 @@ struct CreateUserView: View {
             Text("Creation d'un compte").padding()
             
             TextField("Pseudo...", text: $pseudo).padding().background(Color.gray).cornerRadius(20.0)
-            TextField("Password ...", text: $password).padding().background(Color.gray).cornerRadius(20.0)
-            Button(action: {}) {
-            Text("Create")
+            SecureField("Password ...", text: $password).padding().background(Color.gray).cornerRadius(20.0)
+            
+            HStack{
+                Button(action: {
+                    if (self.password != "" && self.pseudo != ""){
+                        print("data checked")
+                        if UserQueryService().createUser(pseudo: self.pseudo, password: self.password){
+                            self.isPresented.toggle()
+                        }
+                    }else{
+                        self.showingAlert = true
+                    }
+                    
+                }) {
+                    Text("Create")
+                }.alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
+            }.padding().background(Color.orange).foregroundColor(.white).cornerRadius(15)
+                
+                Button(action: {}) {
+                    Text("Login")
             }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15)
+            }
+            
             
         }
         
     }
 }
 
-struct CreateUserView_Previews: PreviewProvider {
+/*struct CreateUserView_Previews: PreviewProvider {
     static var previews: some View {
         CreateUserView()
     }
-}
+}*/

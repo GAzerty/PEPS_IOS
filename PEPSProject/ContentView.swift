@@ -10,10 +10,34 @@ import SwiftUI
 
 struct ContentView: View {
    
+    @State var isShown: Bool = false
 
     var body: some View {
-        ListRemarksView()
+        
+        VStack{
+            HStack{
+                Text(" WELCOME TO PEPS").padding()
+                Button(action:{self.isShown.toggle()}){
+                    VStack{
+                        Image(systemName: "person")
+                        .padding()
+                        .foregroundColor(.black)
+                        .background(Color.gray)
+                        .cornerRadius(40)
+                    }
+                }.sheet(isPresented: self.$isShown){
+                    CreateUserView(isPresented: self.$isShown)
+                }
+                   
+            }
+            
+            VStack{
+                ListRemarksView()
+            }
+        }
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
