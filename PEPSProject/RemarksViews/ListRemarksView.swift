@@ -22,6 +22,14 @@ struct ListRemarksView: View {
                         RemarkRowView(remark: remark)
                     }
                 }
+                /*Button(action: {
+                    print(UserQueryService().createUser(pseudo: "SuccessFull5", password: "Password1234"))
+                    
+                }
+                ){
+                    Text("Create new User")
+                }*/
+                
             }
         .navigationBarTitle("Remarks")
         }

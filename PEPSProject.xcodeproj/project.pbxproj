@@ -12,6 +12,8 @@
 		8669165C2405738C0029E5AC /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165B2405738C0029E5AC /* CreateUserView.swift */; };
 		8669165E240573A40029E5AC /* ReadUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165D240573A40029E5AC /* ReadUserView.swift */; };
 		86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165F240573FA0029E5AC /* ListRemarksView.swift */; };
+		868D6D0B2407E7E700D159F2 /* UserQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868D6D0A2407E7E700D159F2 /* UserQueryService.swift */; };
+		868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */; };
 		86F38E57240671F500662E06 /* RemarkSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F38E56240671F500662E06 /* RemarkSet.swift */; };
 		86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F38E58240676C900662E06 /* RemarkRowView.swift */; };
 		86FCED8724055CA800E46817 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCED8624055CA800E46817 /* AppDelegate.swift */; };
@@ -48,6 +50,8 @@
 		8669165B2405738C0029E5AC /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 		8669165D240573A40029E5AC /* ReadUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadUserView.swift; sourceTree = "<group>"; };
 		8669165F240573FA0029E5AC /* ListRemarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRemarksView.swift; sourceTree = "<group>"; };
+		868D6D0A2407E7E700D159F2 /* UserQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQueryService.swift; sourceTree = "<group>"; };
+		868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkQueryService.swift; sourceTree = "<group>"; };
 		86F38E56240671F500662E06 /* RemarkSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkSet.swift; sourceTree = "<group>"; };
 		86F38E58240676C900662E06 /* RemarkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkRowView.swift; sourceTree = "<group>"; };
 		86FCED8324055CA800E46817 /* PEPSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PEPSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +140,15 @@
 			path = RemarksViews;
 			sourceTree = "<group>";
 		};
+		868D6D092407E7BF00D159F2 /* QueryService */ = {
+			isa = PBXGroup;
+			children = (
+				868D6D0A2407E7E700D159F2 /* UserQueryService.swift */,
+				868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */,
+			);
+			path = QueryService;
+			sourceTree = "<group>";
+		};
 		86FCED7A24055CA800E46817 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 		86FCED8524055CA800E46817 /* PEPSProject */ = {
 			isa = PBXGroup;
 			children = (
+				868D6D092407E7BF00D159F2 /* QueryService */,
 				8638E02B2405AED400ACE464 /* Model */,
 				8669165A2405733E0029E5AC /* RemarksViews */,
 				86691658240572B50029E5AC /* UsersViews */,
@@ -335,9 +349,11 @@
 				8669165C2405738C0029E5AC /* CreateUserView.swift in Sources */,
 				86FCED8724055CA800E46817 /* AppDelegate.swift in Sources */,
 				86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */,
+				868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */,
 				86FCED8E24055CA800E46817 /* ContentView.swift in Sources */,
 				86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */,
 				8638E0332405B92C00ACE464 /* Remark.swift in Sources */,
+				868D6D0B2407E7E700D159F2 /* UserQueryService.swift in Sources */,
 				8638E02D2405AEF600ACE464 /* User.swift in Sources */,
 				8669165E240573A40029E5AC /* ReadUserView.swift in Sources */,
 				86FCED8924055CA800E46817 /* SceneDelegate.swift in Sources */,

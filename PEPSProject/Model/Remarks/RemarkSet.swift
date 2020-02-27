@@ -14,13 +14,22 @@ class RemarkSet: ObservableObject {
     @Published var remarkSet : [Remark] = [Remark]()
     
     init(){
-        getAllRemarks()
+        RemarkQueryService().getAllRemarks(remarkSet: self)
     }
     
     init(idUser: Int){}
     
+    func addRemarks(remark: Remark){
+        self.remarkSet.append(remark)
+    }
     
-    func getAllRemarks(){
+    func addRemarks(remarkTab: [Remark]){
+        for remark in remarkTab{
+            self.remarkSet.append(remark)
+        }
+    }
+    
+    /*func getAllRemarks(){
         if let urlAPI = URL(string: "https://web-ios-api.herokuapp.com/remarks"){
              print(urlAPI)
              URLSession.shared.dataTask(with: urlAPI) { data, response, error in
@@ -36,28 +45,27 @@ class RemarkSet: ObservableObject {
                              //On recupere "data" comme un tableau de type Any
                              if let dataT = dictionnaryData["data"] as? [Any]{
                                 DispatchQueue.main.async {
-                                 for remark in dataT{
-                                     if let newRemark = remark as? [String:Any]{
-                                        let idRemark = newRemark["idRemark"] as! Int
-                                        let remark = newRemark["remark"] as! String
-                                        let idCategory = newRemark["idCategory"] as! Int
-                                        let idUser = newRemark["idUser"] as! Int
-                                        
-                                        let u = User(idUser: idUser)
-                                        let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u)
-                                        
-                                        self.remarkSet.append(r)
-                                    }
-                                 }
+                                     for remark in dataT{
+                                         if let newRemark = remark as? [String:Any]{
+                                            let idRemark = newRemark["idRemark"] as! Int
+                                            let remark = newRemark["remark"] as! String
+                                            let idCategory = newRemark["idCategory"] as! Int
+                                            let idUser = newRemark["idUser"] as! Int
+                                            
+                                            let u : User = UserQueryService().getUserById(idUser: idUser)
+                                            let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u)
+                                            
+                                            self.remarkSet.append(r)
+                                        }
+                                     }
                                 }
                              }
                          }
                      }
                  }
              }.resume()
-            
          }
-    }
+    }*/
     
     
 }
