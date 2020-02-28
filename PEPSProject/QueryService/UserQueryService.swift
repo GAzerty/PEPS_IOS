@@ -41,7 +41,6 @@ class UserQueryService{
                                      if let newUser = user as? [String:Any]{
                                          //print(newUser)
                                         newU.idUser = (newUser["idUser"] as! Int)
-                                        newU.password = (newUser["password"] as! String)
                                         newU.role = (newUser["role"] as! String)
                                         newU.pseudo = (newUser["pseudo"] as! String)
                                      }
@@ -101,7 +100,53 @@ class UserQueryService{
         return requestDone
     }
 
-    
+    //Log the User in the API
+    //Store the token in a json file (AppDelegate)
+    func login(pseudo: String, password: String) -> Bool{
+        
+        var requestDone : Bool = false
+        var userToken : String = ""
+        if let urlAPI = URL(string: "https://web-ios-api.herokuapp.com/users/login"){
+            
+            let group = DispatchGroup()
+            group.enter()
+            
+            var request : URLRequest = URLRequest(url: urlAPI)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            do {
+                let newUser = createUserJSON(pseudo: pseudo, password: password)
+                let jsonData = try JSONEncoder().encode(newUser)
+                request.httpBody = jsonData
+            } catch {
+                print(error)
+            }
+             URLSession.shared.dataTask(with: request) { data, response, error in
+                 if let data = data {
+                     
+                     if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableLeaves]){
+                         if let dictionnaryData = jsonObj as? [String:Any]{
+                             print(dictionnaryData)
+                            if let message = dictionnaryData["message"] as? String{
+                                print(message)
+                                if message == "Success"{
+                                    requestDone = true
+                                }
+                            }
+                            if let dataT = dictionnaryData["data"] as? [String:Any]{
+                                userToken = dataT["token"] as! String
+                            }
+                            group.leave()
+                         }
+                     }
+                }
+             }.resume()
+            group.wait()
+         }
+        return requestDone
+    }
     
     
 }

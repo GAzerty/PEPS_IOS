@@ -12,17 +12,14 @@ class User{
     
     var idUser: Int?
     var pseudo: String?
-    var password: String?
     var role: String?
-    var token: String?
        
     
     init(){}
     
-    init(idUser: Int,pseudo: String, password: String, role: String){
+    init(idUser: Int,pseudo: String, role: String){
         self.idUser = idUser
         self.pseudo = pseudo
-        self.password = password
         self.role = role
     }
 }

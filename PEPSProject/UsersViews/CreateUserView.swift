@@ -39,7 +39,9 @@ struct CreateUserView: View {
                     Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
             }.padding().background(Color.orange).foregroundColor(.white).cornerRadius(15)
                 
-                Button(action: {}) {
+                Button(action: {
+                    UserQueryService().login(pseudo: "newUser", password: "newPass")
+                }) {
                     Text("Login")
             }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15)
             }
