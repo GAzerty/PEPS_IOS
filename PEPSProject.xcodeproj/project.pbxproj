@@ -25,6 +25,7 @@
 		86FCED9624055CAA00E46817 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86FCED9424055CAA00E46817 /* LaunchScreen.storyboard */; };
 		86FCEDA124055CAB00E46817 /* PEPSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCEDA024055CAB00E46817 /* PEPSProjectTests.swift */; };
 		86FCEDAC24055CAB00E46817 /* PEPSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCEDAB24055CAB00E46817 /* PEPSProjectUITests.swift */; };
+		B2927B31240829160077057C /* ResearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B30240829160077057C /* ResearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		86FCEDA724055CAB00E46817 /* PEPSProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEPSProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86FCEDAB24055CAB00E46817 /* PEPSProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEPSProjectUITests.swift; sourceTree = "<group>"; };
 		86FCEDAD24055CAB00E46817 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2927B30240829160077057C /* ResearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				8669165F240573FA0029E5AC /* ListRemarksView.swift */,
 				86F38E58240676C900662E06 /* RemarkRowView.swift */,
+				B2927B30240829160077057C /* ResearchBarView.swift */,
 			);
 			path = RemarksViews;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */,
 				86FCED8E24055CA800E46817 /* ContentView.swift in Sources */,
 				86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */,
+				B2927B31240829160077057C /* ResearchBarView.swift in Sources */,
 				8638E0332405B92C00ACE464 /* Remark.swift in Sources */,
 				868D6D0B2407E7E700D159F2 /* UserQueryService.swift in Sources */,
 				8638E02D2405AEF600ACE464 /* User.swift in Sources */,
