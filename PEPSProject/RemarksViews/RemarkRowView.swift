@@ -20,11 +20,11 @@ struct RemarkRowView: View {
                     Image(systemName: "person")
                     Text("\(remark.user.pseudo ?? "pseudo")")
                     Spacer()
-                    Text("le remark.date")
+                    Text("\(remark.date)")
                 }
                 HStack{
                     Image(systemName: "mappin")
-                    Text("à remark.location")
+                    Text("\(remark.location)")
                 }
             }
             
@@ -37,7 +37,7 @@ struct RemarkRowView: View {
             Text("remark.nbComments  comments")
             Spacer()
             HStack{
-                Text("remark.nbEars")
+                Text("\(remark.nbEncounter)")
                 Image(systemName: "volume")
             }
         }.padding(10.0)

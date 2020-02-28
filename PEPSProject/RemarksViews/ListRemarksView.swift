@@ -37,7 +37,7 @@ struct ListRemarksView: View {
                                 Image(systemName: "plus.circle.fill")
                                     .imageScale(.large)
                                     .foregroundColor(.white)
-                            }
+                            }.padding()
                         }
                     }
                 }
