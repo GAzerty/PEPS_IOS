@@ -13,9 +13,9 @@ struct ResearchBarView: View {
     @State private var showCancelButton: Bool = false
       
     @State private var showDetail = false
-      
+   
     var body: some View {
-        HStack(alignment: .top){
+        VStack{
             HStack{
                 Image(systemName: "magnifyingglass")
                 TextField("search", text: $searchTerm, onEditingChanged: { isEditing in
@@ -35,7 +35,9 @@ struct ResearchBarView: View {
              .foregroundColor(.secondary)
              .background(Color(.secondarySystemBackground))
              .cornerRadius(10.0)
-        }
+          
+          FiltersView()
+        }.padding(10)
     }
 }
 

@@ -26,6 +26,10 @@
 		86FCEDA124055CAB00E46817 /* PEPSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCEDA024055CAB00E46817 /* PEPSProjectTests.swift */; };
 		86FCEDAC24055CAB00E46817 /* PEPSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCEDAB24055CAB00E46817 /* PEPSProjectUITests.swift */; };
 		B2927B31240829160077057C /* ResearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B30240829160077057C /* ResearchBarView.swift */; };
+		B2927B362409560E0077057C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B352409560E0077057C /* Category.swift */; };
+		B2927B38240957690077057C /* CategorySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B37240957690077057C /* CategorySet.swift */; };
+		B2927B3A240957E60077057C /* CategoryQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B39240957E60077057C /* CategoryQueryService.swift */; };
+		B2927B3C240967450077057C /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B3B240967450077057C /* FiltersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		86FCEDAB24055CAB00E46817 /* PEPSProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEPSProjectUITests.swift; sourceTree = "<group>"; };
 		86FCEDAD24055CAB00E46817 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2927B30240829160077057C /* ResearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchBarView.swift; sourceTree = "<group>"; };
+		B2927B352409560E0077057C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B2927B37240957690077057C /* CategorySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySet.swift; sourceTree = "<group>"; };
+		B2927B39240957E60077057C /* CategoryQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryQueryService.swift; sourceTree = "<group>"; };
+		B2927B3B240967450077057C /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 		8638E02B2405AED400ACE464 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B2927B34240955CD0077057C /* Categories */,
 				8638E0312405B91100ACE464 /* Remarks */,
 				8638E0302405B8FB00ACE464 /* Users */,
 			);
@@ -139,6 +148,7 @@
 				8669165F240573FA0029E5AC /* ListRemarksView.swift */,
 				86F38E58240676C900662E06 /* RemarkRowView.swift */,
 				B2927B30240829160077057C /* ResearchBarView.swift */,
+				B2927B3B240967450077057C /* FiltersView.swift */,
 			);
 			path = RemarksViews;
 			sourceTree = "<group>";
@@ -147,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				868D6D0A2407E7E700D159F2 /* UserQueryService.swift */,
+				B2927B39240957E60077057C /* CategoryQueryService.swift */,
 				868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */,
 			);
 			path = QueryService;
@@ -215,6 +226,15 @@
 				86FCEDAD24055CAB00E46817 /* Info.plist */,
 			);
 			path = PEPSProjectUITests;
+			sourceTree = "<group>";
+		};
+		B2927B34240955CD0077057C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B2927B352409560E0077057C /* Category.swift */,
+				B2927B37240957690077057C /* CategorySet.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +370,13 @@
 			files = (
 				86FCED8C24055CA800E46817 /* PEPSProject.xcdatamodeld in Sources */,
 				8669165C2405738C0029E5AC /* CreateUserView.swift in Sources */,
+				B2927B3A240957E60077057C /* CategoryQueryService.swift in Sources */,
+				B2927B362409560E0077057C /* Category.swift in Sources */,
+				B2927B3C240967450077057C /* FiltersView.swift in Sources */,
 				86FCED8724055CA800E46817 /* AppDelegate.swift in Sources */,
 				86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */,
 				868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */,
+				B2927B38240957690077057C /* CategorySet.swift in Sources */,
 				86FCED8E24055CA800E46817 /* ContentView.swift in Sources */,
 				86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */,
 				B2927B31240829160077057C /* ResearchBarView.swift in Sources */,

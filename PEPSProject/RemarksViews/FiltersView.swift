@@ -9,8 +9,16 @@
 import SwiftUI
 
 struct FiltersView: View {
+     @ObservedObject var categorySet : CategorySet = CategorySet()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ScrollView(.horizontal) {
+            HStack{
+                ForEach(self.categorySet.categorySet, id: \.idCategory){
+                    category in Text("\(category.lib)").padding(5).foregroundColor(.secondary).background(Color(.secondarySystemBackground)).cornerRadius(50)
+                }
+            }
+        }
     }
 }
 
