@@ -14,24 +14,36 @@ struct ListRemarksView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            ZStack(alignment: .bottomTrailing){
                 //NavBarView()
-                //SearchView()
+                ResearchBarView()
                 List(self.remarkSet.remarkSet) {
                     remark in VStack{
                         RemarkRowView(remark: remark)
                     }
                 }
-                /*Button(action: {
-                    print(UserQueryService().createUser(pseudo: "SuccessFull5", password: "Password1234"))
-                    
-                }
-                ){
-                    Text("Create new User")
-                }*/
                 
+                VStack {
+                    Spacer()
+                    HStack {
+                        Button(action:{
+                            print("Create a Remark")
+                        }){
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(Color(red: 50/255, green: 50/255, blue: 255/255))
+                                    .frame(width: 55, height: 55)
+                                
+                                Image(systemName: "plus.circle.fill")
+                                    .imageScale(.large)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    }
+                }
             }
-        .navigationBarTitle("Remarks")
+            
+            
         }
     }
     
