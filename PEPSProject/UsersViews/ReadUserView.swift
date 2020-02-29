@@ -15,9 +15,9 @@ struct ReadUserView: View {
     var body: some View {
         
         VStack{
-            //Image("photo-profil").clipShape(Circle())
+            
             Text("Infos Personnelles:").padding()
-            //Text("Pseudo: "+user!.pseudo)
+            Text("Pseudo: "+user.pseudo!)
             
             
             HStack{
