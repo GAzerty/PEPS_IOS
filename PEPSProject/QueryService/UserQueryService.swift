@@ -14,7 +14,16 @@ struct createUserJSON: Codable{
     var password : String
 }
 
+struct credentialsJSON: Codable{
+    var user: User
+    var token: String
+}
+
 class UserQueryService{
+    
+    
+    var fileLocation : URL? = Bundle.main.url(forResource: "credentials", withExtension: "json")
+    
     
     //
     //Make a request to API and get the User corresponding to the ID given in parameter
@@ -102,12 +111,83 @@ class UserQueryService{
             
             if let dataT = responseData["data"] as? [String:Any]{
                 userToken = dataT["token"] as! String
-                print(userToken)
                 requestDone = true
             }
         }
+        storeUser(token: userToken)
         return requestDone
         
+    }
+    
+    
+    //Clear the token stored in the JSON file
+    /*func logout(){
+        
+    }*/
+    
+    //Store the token given by the API in a JSON file
+    func storeUser(token: String){
+        
+        if !(isLogged()){
+            
+            if let url = self.fileLocation{
+                do{
+                    
+                    let user : User = getUserById(idUser: 45)
+                    let credentialJson = credentialsJSON(user: user, token: token)
+                    
+                    let jsonEncoder = JSONEncoder()
+                    jsonEncoder.outputFormatting = .prettyPrinted
+                    let data = try jsonEncoder.encode(credentialJson)
+                    try data.write(to: url)
+                }catch{
+                    print(error)
+                }
+            }
+        }
+        
+    }
+    
+    //Return True if a token is stored in the JSON file
+    func isLogged() -> Bool{
+        print(getToken() != nil)
+        return (getToken() != nil)
+    }
+    
+    
+    //Return the Token stored in JSON file
+    //Return nil if no token stored
+    func getToken() -> String?{
+        var token : String?
+        
+        if let url = self.fileLocation{
+            do{
+                let data = try Data(contentsOf: url)
+                let jsonDecoder = JSONDecoder()
+                let dataFromJson = try jsonDecoder.decode(credentialsJSON.self, from: data)
+                token = dataFromJson.token
+            }catch{
+                print(error)
+            }
+        }
+        return token
+    }
+    
+    //Return the User stored in the JSON file
+    func getUserLogged() -> User?{
+        var user : User?
+        
+        if let url = self.fileLocation{
+            do{
+                let data = try Data(contentsOf: url)
+                let jsonDecoder = JSONDecoder()
+                let dataFromJson = try jsonDecoder.decode(credentialsJSON.self, from: data)
+                user = dataFromJson.user
+            }catch{
+                print(error)
+            }
+        }
+        return user
     }
     
     
