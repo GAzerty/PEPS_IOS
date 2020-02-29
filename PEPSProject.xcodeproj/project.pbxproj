@@ -10,6 +10,7 @@
 		860D7E9D240A7B9200A9580E /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860D7E9C240A7B9200A9580E /* QueryService.swift */; };
 		8638E02D2405AEF600ACE464 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638E02C2405AEF600ACE464 /* User.swift */; };
 		8638E0332405B92C00ACE464 /* Remark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638E0322405B92C00ACE464 /* Remark.swift */; };
+		86437767240AB6D500FEF2E7 /* credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 86437766240AB6D500FEF2E7 /* credentials.json */; };
 		8669165C2405738C0029E5AC /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165B2405738C0029E5AC /* CreateUserView.swift */; };
 		8669165E240573A40029E5AC /* ReadUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165D240573A40029E5AC /* ReadUserView.swift */; };
 		86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165F240573FA0029E5AC /* ListRemarksView.swift */; };
@@ -54,6 +55,7 @@
 		860D7E9C240A7B9200A9580E /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
 		8638E02C2405AEF600ACE464 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8638E0322405B92C00ACE464 /* Remark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remark.swift; sourceTree = "<group>"; };
+		86437766240AB6D500FEF2E7 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
 		8669165B2405738C0029E5AC /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 		8669165D240573A40029E5AC /* ReadUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadUserView.swift; sourceTree = "<group>"; };
 		8669165F240573FA0029E5AC /* ListRemarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRemarksView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		86FCED8524055CA800E46817 /* PEPSProject */ = {
 			isa = PBXGroup;
 			children = (
+				86437766240AB6D500FEF2E7 /* credentials.json */,
 				868D6D092407E7BF00D159F2 /* QueryService */,
 				8638E02B2405AED400ACE464 /* Model */,
 				8669165A2405733E0029E5AC /* RemarksViews */,
@@ -346,6 +349,7 @@
 			files = (
 				86FCED9624055CAA00E46817 /* LaunchScreen.storyboard in Resources */,
 				86FCED9324055CAA00E46817 /* Preview Assets.xcassets in Resources */,
+				86437767240AB6D500FEF2E7 /* credentials.json in Resources */,
 				86FCED9024055CAA00E46817 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
