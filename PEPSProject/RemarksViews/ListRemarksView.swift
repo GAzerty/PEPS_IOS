@@ -15,11 +15,12 @@ struct ListRemarksView: View {
     var body: some View {
         NavigationView{
             ZStack(alignment: .bottomTrailing){
-                //NavBarView()
+                
                 ResearchBarView()
                 List(self.remarkSet.remarkSet) {
-                    remark in VStack{
+                    remark in NavigationLink(destination: RemarkRowView(remark: remark)) {VStack{
                         RemarkRowView(remark: remark)
+                    }
                     }
                 }
                 
@@ -32,7 +33,7 @@ struct ListRemarksView: View {
                             ZStack {
                                 Circle()
                                     .foregroundColor(Color(red: 50/255, green: 50/255, blue: 255/255))
-                                    .frame(width: 55, height: 55)
+                                    .frame(width: 55, height: 55).shadow(color: .gray, radius: 1, x: 1, y: 1)
                                 
                                 Image(systemName: "plus.circle.fill")
                                     .imageScale(.large)

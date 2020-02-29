@@ -26,7 +26,13 @@ struct ContentView: View {
                         .cornerRadius(40)
                     }
                 }.sheet(isPresented: self.$isShown){
-                    CreateUserView(isPresented: self.$isShown)
+                    
+                    if(UserQueryService().isLogged()){
+                        
+                        ReadUserView(user: UserQueryService().getUserLogged())
+                    }else{
+                        CreateUserView(isPresented: self.$isShown)
+                    }
                 }
                    
             }
