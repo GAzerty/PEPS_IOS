@@ -14,7 +14,7 @@ class RemarkSet: ObservableObject {
     @Published var remarkSet : [Remark] = [Remark]()
     
     init(){
-        RemarkQueryService().getAllRemarks(remarkSet: self)
+        addRemarks(remarkTab: RemarkQueryService().getAllRemarks())
     }
     
     init(idUser: Int){}

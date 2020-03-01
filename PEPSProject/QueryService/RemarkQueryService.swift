@@ -11,15 +11,15 @@ import Foundation
 
 class RemarkQueryService {
     
-    func getAllRemarks(remarkSet : RemarkSet) -> Bool{
+    func getAllRemarks() -> [Remark]{
         
-        var requestDone : Bool = false
+        var remarkSet : [Remark] = [Remark]()
         var responseDataOpt : [String: Any]?
         
         responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/", httpMethod: "GET", httpBody: nil)
         
         if let responseData = responseDataOpt{
-            requestDone = true
+            
             if let dataT = responseData["data"] as? [Any]{
                 for remark in dataT{
                     if let newRemark = remark as? [String:Any]{
@@ -29,27 +29,29 @@ class RemarkQueryService {
                         let idUser = newRemark["idUser"] as! Int
                         let date2 = newRemark["dateCreation"] as! String
                         print(date2)
-                        //let date = Date(date2)
-                        
+                        let date = Date(timeIntervalSinceReferenceDate: 118800)
+                        /*print(date)
                         let dateFormatter = DateFormatter()
-                        let date = dateFormatter.date(from: "2020-02-25")
-                        //print(date)
+                        dateFormatter.dateStyle = .medium
+                        dateFormatter.locale = Locale(identifier: "fr_FR")
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        print(dateFormatter.date(from: "2010-04-03T00:00:00000"))*/
                         let location = newRemark["location"] as! String
                         let nbEncounter = RemarkQueryService().getNbEncounter(idRemark: idRemark)
                         let answerSet = AnswerSet()
                         answerSet.addAnswers(answerTab: RemarkQueryService().getAllRemarksAnswer(idRemark: idRemark))
                         
                         if let u : User = UserQueryService().getUserById(idUser: idUser){
-                            let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u, answerSet: answerSet, location: location, date: date ?? Date(), nbEncounter: nbEncounter)
+                            let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u, answerSet: answerSet, location: location, date: date, nbEncounter: nbEncounter)
                             
-                            remarkSet.addRemarks(remark: r)
+                            remarkSet.append(r)
                         }
                         
                     }
                 }
             }
         }
-        return requestDone
+        return remarkSet
     }
     
     
@@ -96,7 +98,7 @@ class RemarkQueryService {
         responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/"+String(idRemark)+"/encounter", httpMethod: "GET", httpBody: nil)
         
         if let responseData = responseDataOpt{
-            print(responseData)
+            //print(responseData)
             if let dataT = responseData["data"] as? [String: Any]{
                 let count = dataT["count"] as! String
                 encounter = Int(count) ?? 0
