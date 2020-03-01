@@ -50,5 +50,29 @@ class CategoryQueryService {
     }
     
     
+    func getCategoryById(idCategory: Int) -> Category?{
+        
+        var category : Category?
+        var responseDataOpt : [String: Any]?
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/categories/"+String(idCategory), httpMethod: "GET", httpBody: nil)
+        
+        if let responseData = responseDataOpt{
+            if let dataT = responseData["data"] as? [Any]{
+                for categ in dataT{
+                    if let newCategory = categ as? [String: Any]{
+                       let idCategory = newCategory["idCategory"] as! Int
+                       let lib = newCategory["lib"] as! String
+                       let type = newCategory["type"] as! String
+                      
+                       category = Category(idCategory: idCategory, lib: lib, type: type)
+                   }
+                }
+            }
+        }
+        
+        return category
+    }
+    
     
 }

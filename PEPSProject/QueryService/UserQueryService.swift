@@ -28,9 +28,9 @@ class UserQueryService{
     //
     //Make a request to API and get the User corresponding to the ID given in parameter
     //Create a User with the data received and return the User
-    func getUserById(idUser: Int) -> User{
+    func getUserById(idUser: Int) -> User?{
         
-        var newU : User = User()
+        var newU : User?
         
         var responseDataOpt : [String: Any]?
         
@@ -41,9 +41,11 @@ class UserQueryService{
                 for user in dataUser{
                     if let newUser = user as? [String:Any]{
                         //print(newUser)
-                        newU.idUser = (newUser["idUser"] as! Int)
-                        newU.role = (newUser["role"] as! String)
-                        newU.pseudo = (newUser["pseudo"] as! String)
+                        let idUser = (newUser["idUser"] as! Int)
+                        let role = (newUser["role"] as! String)
+                        let pseudo = (newUser["pseudo"] as! String)
+                        
+                        newU = User(idUser: idUser, pseudo: pseudo, role: role)
                     }
                 }
             }
@@ -133,7 +135,9 @@ class UserQueryService{
             if let url = self.fileLocation{
                 do{
                     
-                    let user : User = getUserById(idUser: 45)
+                    guard let user : User = getUserById(idUser: 45) else{
+                        return
+                    }
                     let credentialJson = credentialsJSON(user: user, token: token)
                     
                     let jsonEncoder = JSONEncoder()

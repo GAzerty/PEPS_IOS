@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+
+class AnswerQueryServic{
+    
+    //func getAnswerById(idAnswer: Int){}
+    
+}
