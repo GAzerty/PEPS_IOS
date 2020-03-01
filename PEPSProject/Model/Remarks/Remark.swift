@@ -14,16 +14,17 @@ class Remark : Identifiable{
     var remark: String
     var category: Int
     var user: User
-    //var answerSet: AnswerSet
+    var answerSet: AnswerSet
     var location : String
     var date: Date
     var nbEncounter : Int
     
-    init(idRemark: Int, remark: String, idCategory: Int, user: User, location: String, date: Date, nbEncounter: Int){
+    init(idRemark: Int, remark: String, idCategory: Int, user: User, answerSet: AnswerSet, location: String, date: Date, nbEncounter: Int){
         self.idRemark = idRemark
         self.remark = remark
         self.category = idCategory
         self.user = user
+        self.answerSet = answerSet
         self.date = date
         self.location = location
         self.nbEncounter = nbEncounter

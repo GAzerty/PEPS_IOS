@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class AnswerSet: ObservableObject {
+    
+    @Published var answerSet : [Answer] = [Answer]()
+    
+    init(){}
+    
+    func addAnswers(answer: Answer){
+        self.answerSet.append(answer)
+    }
+    
+    func addAnswers(answerTab: [Answer]){
+        for answer in answerTab{
+            self.answerSet.append(answer)
+        }
+    }
+}

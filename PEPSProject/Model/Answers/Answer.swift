@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+class Answer{
+    
+    var idAnswer : Int
+    var answer : String
+    var category : Category
+    var user : User
+    
+    init(idAnswer: Int, answer: String, category: Category, user: User){
+        self.idAnswer=idAnswer
+        self.answer=answer
+        self.category=category
+        self.user=user
+    }
+    
+}
