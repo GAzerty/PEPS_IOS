@@ -34,7 +34,11 @@ struct RemarkRowView: View {
         Text("\(remark.remark)").padding(10)
         Divider()
         HStack{
-            Text("remark.nbComments  comments")
+            HStack{
+                Text("\(remark.answerSet.answerSet.count)")
+                Image(systemName: "message")
+            }
+            
             Spacer()
             HStack{
                 Text("\(remark.nbEncounter)")
