@@ -10,19 +10,29 @@ import SwiftUI
 
 struct FiltersView: View {
     @ObservedObject var categorySet : CategorySet = CategorySet()
-    var categoriesSelected : [Int] = [Int]()
+    @State var categoriesSelected : [Int] = [Int]()
+    @ObservedObject var remarkSet : RemarkSet = RemarkSet()
+    @State var arePressed : [Int] = [Int]()
+    
     var body: some View {
         
         ScrollView(.horizontal) {
             HStack{
-                ForEach(self.categorySet.categorySet, id: \.idCategory){
-                    category in
-                    Button(action: {
-                        print(category.idCategory)
-                        //self.categoriesSelected.append(category.idCategory)
-                    }) {
-                Text("\(category.lib)").padding(5).foregroundColor(.secondary).background(Color(.secondarySystemBackground)).cornerRadius(50)
-                    }
+                ForEach(self.categorySet.categorySet.indices){
+                    i in
+                   
+                       Button(action: {
+                        if(!self.arePressed.contains(i)){
+                            self.arePressed.append(i)
+                            self.categoriesSelected.append(self.categorySet.categorySet[i].idCategory)
+                        }else{
+                            self.arePressed.remove(at: self.arePressed.firstIndex(of: i)!)
+                            
+                        }
+                        self.remarkSet.remarkSet = self.remarkSet.filterBy(idCategories: self.categoriesSelected)
+                             }) {
+                                Text("\(self.categorySet.categorySet[i].lib)").padding(5).foregroundColor(.secondary).background(self.arePressed.contains(i) ? Color.gray : Color(.secondarySystemBackground)).cornerRadius(50)
+                         }
                 }
             }
         }
@@ -34,3 +44,5 @@ struct FiltersView_Previews: PreviewProvider {
         FiltersView()
     }
 }
+
+

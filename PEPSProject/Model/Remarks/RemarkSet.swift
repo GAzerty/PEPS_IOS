@@ -32,6 +32,6 @@ class RemarkSet: ObservableObject {
         return remarkSet.filter( {$0.category != idCategory })
     }
     func filterBy(idCategories : [Int])->[Remark]{
-        return remarkSet.filter( { !idCategories.contains($0.category) })
+        return remarkSet.filter( { idCategories.contains($0.category) })
     }
 }

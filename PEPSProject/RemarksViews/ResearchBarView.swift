@@ -11,7 +11,7 @@ import SwiftUI
 struct ResearchBarView: View {
     @State private var searchTerm : String = ""
     @State private var showCancelButton: Bool = false
-      
+    @ObservedObject var remarkSet : RemarkSet = RemarkSet()
     @State private var showDetail = false
    
     var body: some View {
@@ -40,7 +40,7 @@ struct ResearchBarView: View {
             OrderByView()
             }
 
-          FiltersView()
+            FiltersView(remarkSet: self.remarkSet)
         }.padding(10)
     }
 }
@@ -50,3 +50,4 @@ struct ResearchBarView_Previews: PreviewProvider {
         ResearchBarView()
     }
 }
+

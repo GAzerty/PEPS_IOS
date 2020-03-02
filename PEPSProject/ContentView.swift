@@ -36,7 +36,6 @@ struct ContentView: View {
                 }
                    
             }
-            ResearchBarView()
             VStack{
                 ListRemarksView()
             }
