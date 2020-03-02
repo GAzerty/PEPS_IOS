@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		860D7E9D240A7B9200A9580E /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860D7E9C240A7B9200A9580E /* QueryService.swift */; };
+		86183742240D609B0097EAFC /* ReadRemarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86183741240D609B0097EAFC /* ReadRemarkView.swift */; };
 		8638E02D2405AEF600ACE464 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638E02C2405AEF600ACE464 /* User.swift */; };
 		8638E0332405B92C00ACE464 /* Remark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638E0322405B92C00ACE464 /* Remark.swift */; };
 		86437767240AB6D500FEF2E7 /* credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 86437766240AB6D500FEF2E7 /* credentials.json */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		860D7E9C240A7B9200A9580E /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
+		86183741240D609B0097EAFC /* ReadRemarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRemarkView.swift; sourceTree = "<group>"; };
 		8638E02C2405AEF600ACE464 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8638E0322405B92C00ACE464 /* Remark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remark.swift; sourceTree = "<group>"; };
 		86437766240AB6D500FEF2E7 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				86F38E58240676C900662E06 /* RemarkRowView.swift */,
 				B2927B3B240967450077057C /* FiltersView.swift */,
 				B2927B42240D09560077057C /* OrderByView.swift */,
+				86183741240D609B0097EAFC /* ReadRemarkView.swift */,
 			);
 			path = RemarksViews;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86183742240D609B0097EAFC /* ReadRemarkView.swift in Sources */,
 				86FCED8C24055CA800E46817 /* PEPSProject.xcdatamodeld in Sources */,
 				8669165C2405738C0029E5AC /* CreateUserView.swift in Sources */,
 				B2927B3A240957E60077057C /* CategoryQueryService.swift in Sources */,

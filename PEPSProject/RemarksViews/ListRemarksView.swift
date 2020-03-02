@@ -18,9 +18,8 @@ struct ListRemarksView: View {
                 
                 ResearchBarView()
                 List(self.remarkSet.remarkSet) {
-                    remark in NavigationLink(destination: RemarkRowView(remark: remark)) {VStack{
+                    remark in VStack{
                         RemarkRowView(remark: remark)
-                    }
                     }
                 }
                 

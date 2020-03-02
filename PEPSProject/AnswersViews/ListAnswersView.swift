@@ -9,21 +9,24 @@
 import SwiftUI
 
 struct ListAnswersView: View {
-    @ObservedObject var answerSet : AnswerSet = AnswerSet()
-    
+    @ObservedObject var answerSet : AnswerSet
+    @Binding var isPresentend : Bool
     var body: some View {
         
-        List(self.answerSet.answerSet) {
-            answer in
-            VStack{
-                AnswerRowView(answer: answer)
+        VStack{
+            List(self.answerSet.answerSet) {
+                answer in
+                VStack{
+                    AnswerRowView(answer: answer)
+                }
             }
         }
+        
     }
 }
 
-struct ListAnswersView_Previews: PreviewProvider {
+/*struct ListAnswersView_Previews: PreviewProvider {
     static var previews: some View {
         ListAnswersView()
     }
-}
+}*/

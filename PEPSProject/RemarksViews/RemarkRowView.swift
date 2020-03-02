@@ -11,6 +11,7 @@ import SwiftUI
 struct RemarkRowView: View {
     
     var remark: Remark!
+    @State var isShown: Bool = false
     
     var body: some View {
 
@@ -41,16 +42,23 @@ struct RemarkRowView: View {
                 VStack{
                     HStack{
                         HStack{
-                            Text("\(remark.answerSet.answerSet.count)")
-                            Image(systemName: "message")
+                            Button(action:{self.isShown.toggle()                                
+                            }){
+                                HStack{
+                                    Text("\(remark.answerSet.answerSet.count)")
+                                    Image(systemName: "message").foregroundColor(.blue)
+                                }
+                            }.sheet(isPresented: self.$isShown){
+                                ListAnswersView(answerSet: self.remark!.answerSet,isPresentend: self.$isShown)
+                                
+                            }
                         }
-                        Image(systemName:"chevron.up").resizable().frame(width:13, height: 6)
                         Spacer()
                         HStack{
                             Text("\(remark.nbEncounter)")
                             Image(systemName: "volume")
                         }
-                    }.padding(10.0).onTapGesture {}
+                    }.padding(10.0)
                 }
             }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
         }
