@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Answer{
+class Answer : Identifiable{
     
     var idAnswer : Int
     var answer : String
