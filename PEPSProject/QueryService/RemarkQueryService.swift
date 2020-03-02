@@ -127,13 +127,14 @@ class RemarkQueryService {
         var jsonData : Data?
         do {
             if let token = UserQueryService().getToken(){
-                let newUser = createRemarkJSON(remark: remark, idCategory: idCategory, token: token, location: location)
-                jsonData = try JSONEncoder().encode(newUser)
+                let newRemark = createRemarkJSON(remark: remark, idCategory: idCategory, token: token, location: location)
+                jsonData = try JSONEncoder().encode(newRemark)
             }
             
         } catch {
             print(error)
         }
+        
         responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks", httpMethod: "POST", httpBody: jsonData)
         
         if let responseData = responseDataOpt{
