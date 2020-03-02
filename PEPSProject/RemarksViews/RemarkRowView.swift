@@ -45,7 +45,7 @@ struct RemarkRowView: View {
                         }
                     }.padding(10.0).onTapGesture {}
                 }
-            }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 1, x: 1, y: 1)
+            }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
         }
     
 }

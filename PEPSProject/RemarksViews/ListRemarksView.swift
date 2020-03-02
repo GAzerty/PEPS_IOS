@@ -31,12 +31,12 @@ struct ListRemarksView: View {
                         }){
                             ZStack {
                                 Circle()
-                                    .foregroundColor(Color(red: 50/255, green: 50/255, blue: 255/255))
-                                    .frame(width: 55, height: 55).shadow(color: .gray, radius: 1, x: 1, y: 1)
+                                    .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
+                                    .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
                                 
-                                Image(systemName: "plus.circle.fill")
+                                Image(systemName: "plus")
                                     .imageScale(.large)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.purple)
                             }.padding()
                         }
                     }
