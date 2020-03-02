@@ -11,6 +11,7 @@ import SwiftUI
 struct RemarkRowView: View {
     
     var remark: Remark!
+    
     var body: some View {
 
             VStack{
@@ -20,7 +21,13 @@ struct RemarkRowView: View {
                             Image(systemName: "person")
                             Text("\(remark.user.pseudo ?? "pseudo")")
                             Spacer()
-                            Text("\(remark.date)")
+                            
+                            
+                            
+                            
+                            
+                            Text("\(remark.getDateFormat(format: "fr_FR"))")
+                            
                         }
                         HStack{
                             Image(systemName: "mappin")

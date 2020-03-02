@@ -27,24 +27,28 @@ class RemarkQueryService {
                         let remark = newRemark["remark"] as! String
                         let idCategory = newRemark["idCategory"] as! Int
                         let idUser = newRemark["idUser"] as! Int
-                        let date2 = newRemark["dateCreation"] as! String
-                        print(date2)
-                        let date = Date(timeIntervalSinceReferenceDate: 118800)
-                        /*print(date)
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateStyle = .medium
-                        dateFormatter.locale = Locale(identifier: "fr_FR")
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
-                        print(dateFormatter.date(from: "2010-04-03T00:00:00000"))*/
+                        let dateCreation = newRemark["dateCreation"] as! String
+                        
+                        let array = dateCreation.components(separatedBy: "T")
+                        let formater = ISO8601DateFormatter()
+                        let dateFormat = array[0]+"T00:00:00Z"
+                        let date = formater.date(from: dateFormat)
+                              
+                        
+                        
                         let location = newRemark["location"] as! String
                         let nbEncounter = RemarkQueryService().getNbEncounter(idRemark: idRemark)
                         let answerSet = AnswerSet()
                         answerSet.addAnswers(answerTab: RemarkQueryService().getAllRemarksAnswer(idRemark: idRemark))
                         
                         if let u : User = UserQueryService().getUserById(idUser: idUser){
-                            let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u, answerSet: answerSet, location: location, date: date, nbEncounter: nbEncounter)
+                            if let date = date {
+                                
+                                let r = Remark(idRemark: idRemark, remark: remark, idCategory: idCategory, user: u, answerSet: answerSet, location: location, date: date, nbEncounter: nbEncounter)
+                                
+                                remarkSet.append(r)
+                            }
                             
-                            remarkSet.append(r)
                         }
                         
                     }

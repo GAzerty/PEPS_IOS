@@ -29,4 +29,14 @@ class Remark : Identifiable{
         self.location = location
         self.nbEncounter = nbEncounter
     }
+    
+    //format: String
+    //example: format = "fr_FR"
+    func getDateFormat(format: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: format)
+        return dateFormatter.string(from: self.date)
+    }
 }
