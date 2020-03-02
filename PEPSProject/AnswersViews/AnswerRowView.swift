@@ -9,8 +9,26 @@
 import SwiftUI
 
 struct AnswerRowView: View {
+    var answer: Answer!
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading){
+            HStack{
+                Image(systemName: "person")
+                Text("\(answer.user.pseudo ?? "pseudo")")
+                //Text("pseudo")
+            }.padding(10)
+           
+            Text("\(answer.answer)").padding(10)
+            //Text("answer.answer").padding(10)
+            
+            HStack{
+                HStack{
+                    Text("answer.nbCheck")
+                    Image(systemName: "volume")
+                }.padding(10.0)
+            }
+        }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 1, x: 1, y: 1)
     }
 }
 

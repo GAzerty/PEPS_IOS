@@ -9,8 +9,16 @@
 import SwiftUI
 
 struct ListAnswersView: View {
+    @ObservedObject var answerSet : AnswerSet = AnswerSet()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        List(self.answerSet.answerSet) {
+            answer in
+            VStack{
+                AnswerRowView(answer: answer)
+            }
+        }
     }
 }
 
