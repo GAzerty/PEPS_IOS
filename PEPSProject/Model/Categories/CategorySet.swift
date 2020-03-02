@@ -11,9 +11,14 @@ import Foundation
 class CategorySet: ObservableObject {
     @Published var categorySet : [Category] = [Category]()
     init(){
-        CategoryQueryService().getAllCategories(categorySet: self)
+        addCategories(categoryTab: CategoryQueryService().getAllCategories())
     }
     func addCategory(category: Category){
         self.categorySet.append(category)
+    }
+    func addCategories(categoryTab: [Category]){
+        for category in categoryTab{
+            self.categorySet.append(category)
+        }
     }
 }

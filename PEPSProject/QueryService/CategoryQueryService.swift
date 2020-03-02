@@ -9,44 +9,30 @@
 import Foundation
 class CategoryQueryService {
     
-    func getAllCategories(categorySet : CategorySet) -> Bool{
+    func getAllCategories() -> [Category]{
+        var categorySet : [Category] = [Category]()
+        var responseDataOpt : [String: Any]?
         
-        if let urlAPI = URL(string: "https://web-ios-api.herokuapp.com/categories"){
-             print(urlAPI)
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/categories", httpMethod: "GET", httpBody: nil)
+       
+        if let data = responseDataOpt {
             
-             URLSession.shared.dataTask(with: urlAPI) { data, response, error in
-                 if let data = data {
-                     
-                     if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableLeaves]){
-                         //print(jsonObj)
-                         
-                         if let dictionnaryData = jsonObj as? [String:Any]{
-                             //print(dictionnaryData)
-                             //print(dictionnaryData["data"] as! [Any])
-                             
-                             //On recupere "data" comme un tableau de type Any
-                             if let dataT = dictionnaryData["data"] as? [Any]{
-                                DispatchQueue.main.async {
-                                     for category in dataT{
-                                         if let newCategory = category as? [String:Any]{
-                                            let idCategory = newCategory["idCategory"] as! Int
-                                            let lib = newCategory["lib"] as! String
-                                            let type = newCategory["type"] as! String
+            if let dataT = data["data"] as? [Any]{
+                for category in dataT{
+                    if let newCategory = category as? [String:Any]{
+                        let idCategory = newCategory["idCategory"] as! Int
+                        let lib = newCategory["lib"] as! String
+                        let type = newCategory["type"] as! String
                                            
-                                            let c = Category(idCategory: idCategory, lib: lib, type: type)
+                        let c = Category(idCategory: idCategory, lib: lib, type: type)
                                             
-                                            categorySet.addCategory(category: c)
+                        categorySet.append(c)
                                             
-                                        }
-                                     }
-                                }
-                             }
-                         }
-                     }
-                 }
-             }.resume()
+                    }
+                }
+            }
         }
-        return true
+        return categorySet
     }
     
     
