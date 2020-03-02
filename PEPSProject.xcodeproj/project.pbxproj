@@ -35,6 +35,9 @@
 		B2927B38240957690077057C /* CategorySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B37240957690077057C /* CategorySet.swift */; };
 		B2927B3A240957E60077057C /* CategoryQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B39240957E60077057C /* CategoryQueryService.swift */; };
 		B2927B3C240967450077057C /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B3B240967450077057C /* FiltersView.swift */; };
+		B2927B3F240CF63A0077057C /* AnswerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B3E240CF63A0077057C /* AnswerRowView.swift */; };
+		B2927B41240CF8170077057C /* ListAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B40240CF8170077057C /* ListAnswersView.swift */; };
+		B2927B43240D09560077057C /* OrderByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B42240D09560077057C /* OrderByView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		B2927B37240957690077057C /* CategorySet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySet.swift; sourceTree = "<group>"; };
 		B2927B39240957E60077057C /* CategoryQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryQueryService.swift; sourceTree = "<group>"; };
 		B2927B3B240967450077057C /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		B2927B3E240CF63A0077057C /* AnswerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRowView.swift; sourceTree = "<group>"; };
+		B2927B40240CF8170077057C /* ListAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAnswersView.swift; sourceTree = "<group>"; };
+		B2927B42240D09560077057C /* OrderByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,7 @@
 				86F38E58240676C900662E06 /* RemarkRowView.swift */,
 				B2927B30240829160077057C /* ResearchBarView.swift */,
 				B2927B3B240967450077057C /* FiltersView.swift */,
+				B2927B42240D09560077057C /* OrderByView.swift */,
 			);
 			path = RemarksViews;
 			sourceTree = "<group>";
@@ -211,6 +218,7 @@
 				86437766240AB6D500FEF2E7 /* credentials.json */,
 				868D6D092407E7BF00D159F2 /* QueryService */,
 				8638E02B2405AED400ACE464 /* Model */,
+				B2927B3D240CF6100077057C /* AnswersViews */,
 				8669165A2405733E0029E5AC /* RemarksViews */,
 				86691658240572B50029E5AC /* UsersViews */,
 				86FCED8624055CA800E46817 /* AppDelegate.swift */,
@@ -258,6 +266,15 @@
 				B2927B37240957690077057C /* CategorySet.swift */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		B2927B3D240CF6100077057C /* AnswersViews */ = {
+			isa = PBXGroup;
+			children = (
+				B2927B3E240CF63A0077057C /* AnswerRowView.swift */,
+				B2927B40240CF8170077057C /* ListAnswersView.swift */,
+			);
+			path = AnswersViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,7 +418,9 @@
 				86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */,
 				86FBCF3D240BEBB30012D03D /* Answer.swift in Sources */,
 				868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */,
+				B2927B43240D09560077057C /* OrderByView.swift in Sources */,
 				B2927B38240957690077057C /* CategorySet.swift in Sources */,
+				B2927B41240CF8170077057C /* ListAnswersView.swift in Sources */,
 				86FCED8E24055CA800E46817 /* ContentView.swift in Sources */,
 				86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */,
 				B2927B31240829160077057C /* ResearchBarView.swift in Sources */,
@@ -414,6 +433,7 @@
 				86FBCF3F240BEBC80012D03D /* AnswerSet.swift in Sources */,
 				86FBCF41240BED6C0012D03D /* AnswerQueryService.swift in Sources */,
 				860D7E9D240A7B9200A9580E /* QueryService.swift in Sources */,
+				B2927B3F240CF63A0077057C /* AnswerRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

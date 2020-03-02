@@ -11,42 +11,43 @@ import SwiftUI
 struct RemarkRowView: View {
     
     var remark: Remark!
-    
     var body: some View {
-      VStack{
-        HStack{
-            VStack(alignment: .leading){
+
+            VStack{
                 HStack{
-                    Image(systemName: "person")
-                    Text("\(remark.user.pseudo ?? "pseudo")")
-                    Spacer()
-                    Text("\(remark.date)")
+                    VStack(alignment: .leading){
+                        HStack{
+                            Image(systemName: "person")
+                            Text("\(remark.user.pseudo ?? "pseudo")")
+                            Spacer()
+                            Text("\(remark.date)")
+                        }
+                        HStack{
+                            Image(systemName: "mappin")
+                            Text("\(remark.location)")
+                        }
+                    }
+                }.padding(10)
+                Divider()
+                Text("\(remark.remark)").padding(10)
+                Divider()
+                VStack{
+                    HStack{
+                        HStack{
+                            Text("\(remark.answerSet.answerSet.count)")
+                            Image(systemName: "message")
+                        }
+                        Image(systemName:"chevron.up").resizable().frame(width:13, height: 6)
+                        Spacer()
+                        HStack{
+                            Text("\(remark.nbEncounter)")
+                            Image(systemName: "volume")
+                        }
+                    }.padding(10.0).onTapGesture {}
                 }
-                HStack{
-                    Image(systemName: "mappin")
-                    Text("\(remark.location)")
-                }
-            }
-            
-               
-        }.padding(10)
-        Divider()
-        Text("\(remark.remark)").padding(10)
-        Divider()
-        HStack{
-            HStack{
-                Text("\(remark.answerSet.answerSet.count)")
-                Image(systemName: "message")
-            }
-            
-            Spacer()
-            HStack{
-                Text("\(remark.nbEncounter)")
-                Image(systemName: "volume")
-            }
-        }.padding(10.0)
-    }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 1, x: 1, y: 1)
-    }
+            }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 1, x: 1, y: 1)
+        }
+    
 }
 
 

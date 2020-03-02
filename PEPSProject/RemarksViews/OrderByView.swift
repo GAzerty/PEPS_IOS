@@ -19,12 +19,14 @@ struct OrderByView: View {
                 self.expand.toggle()
             }
             if expand{
+                
                 Button(action : {self.expand.toggle()}){
                     Text("recent")
                 }.foregroundColor(.black)
                 Button(action : {self.expand.toggle()}){
                     Text("recommanded")
                 }.foregroundColor(.black)
+            
             }
            
         }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
