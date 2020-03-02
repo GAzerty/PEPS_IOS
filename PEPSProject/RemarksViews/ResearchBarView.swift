@@ -17,6 +17,7 @@ struct ResearchBarView: View {
     var body: some View {
         VStack{
             HStack{
+            HStack{
                 Image(systemName: "magnifyingglass")
                 TextField("search", text: $searchTerm, onEditingChanged: { isEditing in
                      self.showCancelButton = true
@@ -30,12 +31,15 @@ struct ResearchBarView: View {
                     Image(systemName: "xmark.circle.fill").opacity(searchTerm == "" ? 0 : 1)
                  }
               
+                
              }
              .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
              .foregroundColor(.secondary)
              .background(Color(.secondarySystemBackground))
              .cornerRadius(10.0)
-          
+            OrderByView()
+            }
+
           FiltersView()
         }.padding(10)
     }
