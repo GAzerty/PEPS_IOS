@@ -32,7 +32,7 @@ struct RemarkRowView: View {
                         }
                         HStack{
                             Image(systemName: "mappin")
-                            Text("\(remark.location)")
+                            Text("\(self.remark.location)")
                         }
                     }
                 }.padding(10)
@@ -49,8 +49,7 @@ struct RemarkRowView: View {
                                     Image(systemName: "message").foregroundColor(.blue)
                                 }
                             }.sheet(isPresented: self.$isShown){
-                                ListAnswersView(answerSet: self.remark!.answerSet,isPresentend: self.$isShown)
-                                
+                                ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
                             }
                         }
                         Spacer()

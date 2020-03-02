@@ -11,6 +11,7 @@ import SwiftUI
 struct ListRemarksView: View {
     
     @ObservedObject var remarkSet : RemarkSet = RemarkSet()
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationView{
@@ -27,7 +28,13 @@ struct ListRemarksView: View {
                     Spacer()
                     HStack {
                         Button(action:{
-                            print("Create a Remark")
+                            
+                            if(UserQueryService().isLogged()){
+                                print("Create a Remark")
+                            }else{
+                                self.showingAlert = true
+                            }
+                            
                         }){
                             ZStack {
                                 Circle()
@@ -38,12 +45,12 @@ struct ListRemarksView: View {
                                     .imageScale(.large)
                                     .foregroundColor(.purple)
                             }.padding()
+                        }.alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Account not allowed "), message: Text("Please login first"), dismissButton: .default(Text("Ok !")))
                         }
                     }
                 }
             }
-            
-            
         }
     }
     

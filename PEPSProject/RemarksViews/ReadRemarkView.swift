@@ -11,11 +11,14 @@ import SwiftUI
 struct ReadRemarkView: View {
     
     var remark : Remark!
+    @Binding var isPresentend : Bool
     
     var body: some View {
         
         VStack{
-            RemarkRowView(remark: self.remark)
+            Text("\(self.remark.remark)")
+            ListAnswersView(answerSet: self.remark!.answerSet)
+            
             
         }
         

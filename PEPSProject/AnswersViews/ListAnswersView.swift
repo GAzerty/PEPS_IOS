@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ListAnswersView: View {
     @ObservedObject var answerSet : AnswerSet
-    @Binding var isPresentend : Bool
     var body: some View {
         
         VStack{

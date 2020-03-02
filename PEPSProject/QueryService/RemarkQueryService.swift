@@ -9,6 +9,13 @@
 import Foundation
 
 
+struct createRemarkJSON: Codable{
+    var remark: String
+    var idCategory: Int
+    var token: String
+    var location: String
+}
+
 class RemarkQueryService {
     
     func getAllRemarks() -> [Remark]{
@@ -109,6 +116,38 @@ class RemarkQueryService {
             }
         }
         return encounter
+    }
+    
+    
+    //Pre: The user is logged
+    func createRemark(remark: String, idCategory: Int, location: String)  -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let newUser = createRemarkJSON(remark: remark, idCategory: idCategory, token: token, location: location)
+                jsonData = try JSONEncoder().encode(newUser)
+            }
+            
+        } catch {
+            print(error)
+        }
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks", httpMethod: "POST", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            //print(responseData)
+            if let dataT = responseData["data"] as? [String: Any]{
+                let message = dataT["message"] as! String
+                if message == "Success"{
+                    requestDone = true
+                }
+            }
+        }
+        
+        return requestDone
+        
     }
     
     
