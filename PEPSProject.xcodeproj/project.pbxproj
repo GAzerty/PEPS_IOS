@@ -33,7 +33,6 @@
 		86FCED9624055CAA00E46817 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86FCED9424055CAA00E46817 /* LaunchScreen.storyboard */; };
 		86FCEDA124055CAB00E46817 /* PEPSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCEDA024055CAB00E46817 /* PEPSProjectTests.swift */; };
 		86FCEDAC24055CAB00E46817 /* PEPSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FCEDAB24055CAB00E46817 /* PEPSProjectUITests.swift */; };
-		8FC07F6B345301DB84B4824A /* Pods_PEPSProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3F5127ED4A657210EBC3DA /* Pods_PEPSProject.framework */; };
 		B2927B31240829160077057C /* ResearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B30240829160077057C /* ResearchBarView.swift */; };
 		B2927B362409560E0077057C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B352409560E0077057C /* Category.swift */; };
 		B2927B38240957690077057C /* CategorySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B37240957690077057C /* CategorySet.swift */; };
@@ -42,7 +41,6 @@
 		B2927B3F240CF63A0077057C /* AnswerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B3E240CF63A0077057C /* AnswerRowView.swift */; };
 		B2927B41240CF8170077057C /* ListAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B40240CF8170077057C /* ListAnswersView.swift */; };
 		B2927B43240D09560077057C /* OrderByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2927B42240D09560077057C /* OrderByView.swift */; };
-		B2927B47240EB5850077057C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B2927B46240EB5850077057C /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C3F5127ED4A657210EBC3DA /* Pods_PEPSProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PEPSProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		860D7E9C240A7B9200A9580E /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
 		86183741240D609B0097EAFC /* ReadRemarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRemarkView.swift; sourceTree = "<group>"; };
 		8638E02C2405AEF600ACE464 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -104,9 +101,6 @@
 		B2927B3E240CF63A0077057C /* AnswerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRowView.swift; sourceTree = "<group>"; };
 		B2927B40240CF8170077057C /* ListAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAnswersView.swift; sourceTree = "<group>"; };
 		B2927B42240D09560077057C /* OrderByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByView.swift; sourceTree = "<group>"; };
-		B2927B46240EB5850077057C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		F120D85D5AA60EA95F9CF2EF /* Pods-PEPSProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPSProject.release.xcconfig"; path = "Target Support Files/Pods-PEPSProject/Pods-PEPSProject.release.xcconfig"; sourceTree = "<group>"; };
-		F1E4C89BE7C5660AEB5A559B /* Pods-PEPSProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPSProject.debug.xcconfig"; path = "Target Support Files/Pods-PEPSProject/Pods-PEPSProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FC07F6B345301DB84B4824A /* Pods_PEPSProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,13 +203,10 @@
 		86FCED7A24055CA800E46817 = {
 			isa = PBXGroup;
 			children = (
-				B2927B46240EB5850077057C /* Podfile */,
 				86FCED8524055CA800E46817 /* PEPSProject */,
 				86FCED9F24055CAB00E46817 /* PEPSProjectTests */,
 				86FCEDAA24055CAB00E46817 /* PEPSProjectUITests */,
 				86FCED8424055CA800E46817 /* Products */,
-				C764F3BA8718407E57BA0E87 /* Pods */,
-				FB31AD2A0A5C294CE3B17D14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,24 +286,6 @@
 			path = AnswersViews;
 			sourceTree = "<group>";
 		};
-		C764F3BA8718407E57BA0E87 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F1E4C89BE7C5660AEB5A559B /* Pods-PEPSProject.debug.xcconfig */,
-				F120D85D5AA60EA95F9CF2EF /* Pods-PEPSProject.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		FB31AD2A0A5C294CE3B17D14 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2C3F5127ED4A657210EBC3DA /* Pods_PEPSProject.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,11 +293,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86FCEDB024055CAB00E46817 /* Build configuration list for PBXNativeTarget "PEPSProject" */;
 			buildPhases = (
-				558FFAE0464F19D1ED7BF55B /* [CP] Check Pods Manifest.lock */,
 				86FCED7F24055CA800E46817 /* Sources */,
 				86FCED8024055CA800E46817 /* Frameworks */,
 				86FCED8124055CA800E46817 /* Resources */,
-				3EF682850F3397BE04764F40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -420,7 +390,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2927B47240EB5850077057C /* Podfile in Resources */,
 				86FCED9624055CAA00E46817 /* LaunchScreen.storyboard in Resources */,
 				86FCED9324055CAA00E46817 /* Preview Assets.xcassets in Resources */,
 				86437767240AB6D500FEF2E7 /* credentials.json in Resources */,
@@ -443,48 +412,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3EF682850F3397BE04764F40 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PEPSProject/Pods-PEPSProject-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PEPSProject/Pods-PEPSProject-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PEPSProject/Pods-PEPSProject-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		558FFAE0464F19D1ED7BF55B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PEPSProject-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		86FCED7F24055CA800E46817 /* Sources */ = {
@@ -681,7 +608,6 @@
 		};
 		86FCEDB124055CAB00E46817 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1E4C89BE7C5660AEB5A559B /* Pods-PEPSProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -701,7 +627,6 @@
 		};
 		86FCEDB224055CAB00E46817 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F120D85D5AA60EA95F9CF2EF /* Pods-PEPSProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
