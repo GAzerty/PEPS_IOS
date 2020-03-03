@@ -16,6 +16,10 @@ struct createRemarkJSON: Codable{
     var location: String
 }
 
+struct tokenJSON: Codable{
+    var token: String
+}
+
 class RemarkQueryService {
     
     func getAllRemarks() -> [Remark]{
@@ -40,7 +44,7 @@ class RemarkQueryService {
                         let formater = ISO8601DateFormatter()
                         let dateFormat = array[0]+"T00:00:00Z"
                         let date = formater.date(from: dateFormat)
-                              
+                        
                         
                         
                         let location = newRemark["location"] as! String
@@ -139,11 +143,9 @@ class RemarkQueryService {
         
         if let responseData = responseDataOpt{
             //print(responseData)
-            if let dataT = responseData["data"] as? [String: Any]{
-                let message = dataT["message"] as! String
-                if message == "Success"{
-                    requestDone = true
-                }
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
             }
         }
         
@@ -151,5 +153,59 @@ class RemarkQueryService {
         
     }
     
+    func addEncounter(remark: Remark) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let addEncounter = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(addEncounter)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/"+String(remark.idRemark)+"/encounter", httpMethod: "POST", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+                remark.incrementEncounter()
+            }
+        }
+        
+        return requestDone
+    }
     
+    func removeEncounter(remark: Remark) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let addEncounter = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(addEncounter)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/"+String(remark.idRemark)+"/encounter", httpMethod: "DELETE", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+                remark.decrementEncounter()
+            }
+        }
+        
+        return requestDone
+    }
 }

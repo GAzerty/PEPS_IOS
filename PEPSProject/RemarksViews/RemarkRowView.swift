@@ -14,53 +14,59 @@ struct RemarkRowView: View {
     @State var isShown: Bool = false
     
     var body: some View {
-
-            VStack{
-                HStack{
-                    VStack(alignment: .leading){
-                        HStack{
-                            Image(systemName: "person")
-                            Text("\(remark.user.pseudo ?? "pseudo")")
-                            Spacer()
-                            
-                            
-                            
-                            
-                            
-                            Text("\(remark.getDateFormat(format: "fr_FR"))")
-                            
-                        }
-                        HStack{
-                            Image(systemName: "mappin")
-                            Text("\(self.remark.location)")
-                        }
-                    }
-                }.padding(10)
-                Divider()
-                Text("\(remark.remark)").padding(10)
-                Divider()
-                VStack{
+        
+        VStack{
+            HStack{
+                VStack(alignment: .leading){
                     HStack{
-                        HStack{
-                            Button(action:{self.isShown.toggle()                                
-                            }){
-                                HStack{
-                                    Text("\(remark.answerSet.answerSet.count)")
-                                    Image(systemName: "message").foregroundColor(.blue)
-                                }
-                            }.sheet(isPresented: self.$isShown){
-                                ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
+                        Image(systemName: "person")
+                        Text("\(remark.user.pseudo ?? "pseudo")")
+                        Spacer()
+                        Text("\(remark.getDateFormat(format: "fr_FR"))")
+                    }
+                    HStack{
+                        Image(systemName: "mappin")
+                        Text("\(self.remark.location)")
+                    }
+                }
+            }.padding(10)
+            Divider()
+            HStack{
+                Text("\(remark.remark)")
+            }.padding(10)
+            Divider()
+            
+            HStack{
+                
+                Button(action:{self.isShown.toggle()
+                }){
+                    HStack{
+                        Text("\(remark.answerSet.answerSet.count)")
+                        Image(systemName: "message").foregroundColor(.blue)
+                    }
+                }.sheet(isPresented: self.$isShown){
+                    ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
+                }.foregroundColor(.purple)
+                
+                Spacer()
+                Button(action:{
+                    if(UserQueryService().isLogged()){
+                        if !RemarkQueryService().addEncounter(remark: self.remark){
+                            if RemarkQueryService().removeEncounter(remark: self.remark){
                             }
                         }
-                        Spacer()
-                        HStack{
-                            Text("\(remark.nbEncounter)")
-                            Image(systemName: "volume")
-                        }
-                    }.padding(10.0)
+                    }
+                }){
+                    HStack{
+                        Text("\(remark.nbEncounter)")
+                        Image(systemName: "volume")
+                    }
                 }
-            }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
-        }
+                
+            }.padding(10.0)
+            
+        }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
+    }
     
 }
 
