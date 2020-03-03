@@ -38,7 +38,7 @@ struct RemarkRowView: View {
             
             HStack{
                 
-                Button(action:{self.isShown.toggle()
+                /*Button(action:{self.isShown.toggle()
                 }){
                     HStack{
                         Text("\(remark.answerSet.answerSet.count)")
@@ -46,10 +46,32 @@ struct RemarkRowView: View {
                     }
                 }.sheet(isPresented: self.$isShown){
                     ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
-                }.foregroundColor(.purple)
+                }.foregroundColor(.purple)*/
                 
+                HStack{
+                    Text("\(remark.answerSet.answerSet.count)")
+                    Image(systemName: "message").foregroundColor(.blue)
+                }.onTapGesture {
+                    self.isShown.toggle()
+                    print(self.isShown)
+                    
+                }.sheet(isPresented: self.$isShown){
+                    ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
+                }
                 Spacer()
-                Button(action:{
+                HStack{
+                    Text("\(remark.nbEncounter)")
+                    Image(systemName: "volume")
+                }.onTapGesture {
+                    if(UserQueryService().isLogged()){
+                        if !RemarkQueryService().addEncounter(remark: self.remark){
+                            if RemarkQueryService().removeEncounter(remark: self.remark){
+                            }
+                        }
+                    }
+                }
+                
+                /*Button(action:{
                     if(UserQueryService().isLogged()){
                         if !RemarkQueryService().addEncounter(remark: self.remark){
                             if RemarkQueryService().removeEncounter(remark: self.remark){
@@ -61,7 +83,7 @@ struct RemarkRowView: View {
                         Text("\(remark.nbEncounter)")
                         Image(systemName: "volume")
                     }
-                }
+                }*/
                 
             }.padding(10.0)
             

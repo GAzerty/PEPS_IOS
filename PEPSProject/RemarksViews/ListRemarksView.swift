@@ -20,11 +20,12 @@ struct ListRemarksView: View {
             ZStack(alignment: .bottomTrailing){
                 VStack{
                     ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)
-                List(self.remarkSetSelected.remarkSet) {
-                    remark in VStack{
-                        RemarkRowView(remark: remark)
+                    List(self.remarkSetSelected.remarkSet) {
+                        remark in VStack{
+                            RemarkRowView(remark: remark)
+                        }
                     }
-                }
+                    
                 }
                 VStack {
                     Spacer()

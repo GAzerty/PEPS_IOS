@@ -12,17 +12,48 @@ struct ReadRemarkView: View {
     
     var remark : Remark!
     @Binding var isPresentend : Bool
+    @State var isShown: Bool = false
     
     var body: some View {
         
-        VStack{
-            Text("\(self.remark.remark)")
-            ListAnswersView(answerSet: self.remark!.answerSet)
+        //NavigationView{
             
-            
+            ZStack(alignment: .bottomTrailing){
+                
+                VStack{
+                    HStack{
+                        Text("Answsers").font(.largeTitle)
+                        Spacer()
+                    }.padding(10)
+                    ListAnswersView(answerSet: self.remark!.answerSet)
+                }
+                VStack {
+                    Spacer()
+                    HStack {
+                        Button(action:{self.isShown.toggle()}){
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
+                                    .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                                
+                                Image(systemName: "plus")
+                                    .imageScale(.large)
+                                    .foregroundColor(.purple)
+                            }.padding()
+                        }.sheet(isPresented: self.$isShown){
+                            
+                            if(UserQueryService().isLogged()){
+                                CreateAnswerView(isPresented: self.$isShown, remark: self.remark)
+                            }
+                        }
+                    }
+                }
+            }
         }
         
-    }
+            
+        
+    //}
 }
 
 /*struct ReadRemarkView_Previews: PreviewProvider {
