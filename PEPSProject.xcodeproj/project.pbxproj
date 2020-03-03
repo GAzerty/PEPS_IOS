@@ -18,6 +18,7 @@
 		86691660240573FA0029E5AC /* ListRemarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8669165F240573FA0029E5AC /* ListRemarksView.swift */; };
 		868D6D0B2407E7E700D159F2 /* UserQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868D6D0A2407E7E700D159F2 /* UserQueryService.swift */; };
 		868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */; };
+		86AB3A0C240EB17D0006DE05 /* CreateAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AB3A0B240EB17D0006DE05 /* CreateAnswerView.swift */; };
 		86F38E57240671F500662E06 /* RemarkSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F38E56240671F500662E06 /* RemarkSet.swift */; };
 		86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F38E58240676C900662E06 /* RemarkRowView.swift */; };
 		86FBCF3D240BEBB30012D03D /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBCF3C240BEBB30012D03D /* Answer.swift */; };
@@ -71,6 +72,7 @@
 		8669165F240573FA0029E5AC /* ListRemarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRemarksView.swift; sourceTree = "<group>"; };
 		868D6D0A2407E7E700D159F2 /* UserQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQueryService.swift; sourceTree = "<group>"; };
 		868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkQueryService.swift; sourceTree = "<group>"; };
+		86AB3A0B240EB17D0006DE05 /* CreateAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAnswerView.swift; sourceTree = "<group>"; };
 		86F38E56240671F500662E06 /* RemarkSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkSet.swift; sourceTree = "<group>"; };
 		86F38E58240676C900662E06 /* RemarkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkRowView.swift; sourceTree = "<group>"; };
 		86FBCF3C240BEBB30012D03D /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				B2927B3E240CF63A0077057C /* AnswerRowView.swift */,
 				B2927B40240CF8170077057C /* ListAnswersView.swift */,
+				86AB3A0B240EB17D0006DE05 /* CreateAnswerView.swift */,
 			);
 			path = AnswersViews;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				868D6D0B2407E7E700D159F2 /* UserQueryService.swift in Sources */,
 				8638E02D2405AEF600ACE464 /* User.swift in Sources */,
 				8669165E240573A40029E5AC /* ReadUserView.swift in Sources */,
+				86AB3A0C240EB17D0006DE05 /* CreateAnswerView.swift in Sources */,
 				86FCED8924055CA800E46817 /* SceneDelegate.swift in Sources */,
 				86F38E57240671F500662E06 /* RemarkSet.swift in Sources */,
 				86FBCF3F240BEBC80012D03D /* AnswerSet.swift in Sources */,
