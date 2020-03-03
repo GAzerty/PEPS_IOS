@@ -39,4 +39,12 @@ class Remark : Identifiable{
         dateFormatter.locale = Locale(identifier: format)
         return dateFormatter.string(from: self.date)
     }
+    
+    func incrementEncounter(){
+        self.nbEncounter+=1
+    }
+    
+    func decrementEncounter(){
+        self.nbEncounter = self.nbEncounter - 1
+    }
 }

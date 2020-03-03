@@ -26,14 +26,17 @@ struct CreateRemarkView: View {
             Picker(selection: $selectedidCategory, label: Text("Category")){
                 ForEach(0 ..< categorySet.categorySet.count) {
                     Text("\(self.categorySet.categorySet[$0].lib)")
-                    
                 }
+                
+                
+                
             }
             TextField("Location...", text: $location).padding().background(Color.gray).cornerRadius(20.0)
             
             Button(action:{
                 if self.remark != "" && self.location != ""{
-                    if RemarkQueryService().createRemark(remark: self.remark, idCategory: self.selectedidCategory+1, location: self.location){
+                    let idCategory = self.categorySet.categorySet[self.selectedidCategory].idCategory
+                    if RemarkQueryService().createRemark(remark: self.remark, idCategory: idCategory, location: self.location){
                         self.isPresented.toggle()
                     }
                 }else{
