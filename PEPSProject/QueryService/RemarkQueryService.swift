@@ -20,6 +20,11 @@ struct tokenJSON: Codable{
     var token: String
 }
 
+struct linkAnswerRemarkJSON: Codable{
+    var idAnswer : Int
+    var idRemark : Int
+}
+
 class RemarkQueryService {
     
     func getAllRemarks() -> [Remark]{
@@ -207,5 +212,35 @@ class RemarkQueryService {
         }
         
         return requestDone
+    }
+    
+    
+    
+    func linkAnswserToRemark(idRemark: Int, idAnswer: Int) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let linkAnswerRemark = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(linkAnswerRemark)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/"+String(idRemark)+"/answers/"+String(idAnswer), httpMethod: "POST", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+            }
+        }
+        
+        return requestDone
+        
     }
 }
