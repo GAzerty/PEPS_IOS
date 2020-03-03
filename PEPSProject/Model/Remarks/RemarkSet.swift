@@ -34,6 +34,10 @@ class RemarkSet: ObservableObject {
     func filterBy(idCategories : [Int])->[Remark]{
         return idCategories == [] ? remarkSet : remarkSet.filter( { idCategories.contains($0.category) })
     }
+    func filterBy(words : String)->[Remark]{
+        return words == "" ? remarkSet : remarkSet.filter { $0.remark.lowercased().contains(words.lowercased()) }
+    }
+    
     func orderBy(order : Int)->[Remark]{
         var remarkOrderer : [Remark]
         switch order {
