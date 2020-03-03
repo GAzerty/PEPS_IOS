@@ -10,20 +10,22 @@ import SwiftUI
 
 struct ListRemarksView: View {
     
-    @ObservedObject var remarkSet : RemarkSet = RemarkSet()
+    @ObservedObject var remarkSetBase : RemarkSet = RemarkSet()
+    @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet()
+    
     @State var isShown: Bool = false
     
     var body: some View {
         NavigationView{
             ZStack(alignment: .bottomTrailing){
-                
-                ResearchBarView()
-                List(self.remarkSet.remarkSet) {
+                VStack{
+                    ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)
+                List(self.remarkSetSelected.remarkSet) {
                     remark in VStack{
                         RemarkRowView(remark: remark)
                     }
                 }
-                
+                }
                 VStack {
                     Spacer()
                     HStack {

@@ -11,7 +11,8 @@ import SwiftUI
 struct FiltersView: View {
     @ObservedObject var categorySet : CategorySet = CategorySet()
     @State var categoriesSelected : [Int] = [Int]()
-    @ObservedObject var remarkSet : RemarkSet = RemarkSet()
+    @ObservedObject var remarkSetBase : RemarkSet
+    @ObservedObject var remarkSetSelected : RemarkSet
     @State var arePressed : [Int] = [Int]()
     
     var body: some View {
@@ -29,7 +30,8 @@ struct FiltersView: View {
                             self.arePressed.remove(at: self.arePressed.firstIndex(of: i)!)
                             
                         }
-                        self.remarkSet.remarkSet = self.remarkSet.filterBy(idCategories: self.categoriesSelected)
+                        
+                        self.remarkSetSelected.remarkSet = self.remarkSetBase.filterBy(idCategories: self.categoriesSelected)
                              }) {
                                 Text("\(self.categorySet.categorySet[i].lib)").padding(5).foregroundColor(.secondary).background(self.arePressed.contains(i) ? Color.gray : Color(.secondarySystemBackground)).cornerRadius(50)
                          }
@@ -41,7 +43,7 @@ struct FiltersView: View {
 
 struct FiltersView_Previews: PreviewProvider {
     static var previews: some View {
-        FiltersView()
+        FiltersView(remarkSetBase: RemarkSet(),remarkSetSelected: RemarkSet())
     }
 }
 
