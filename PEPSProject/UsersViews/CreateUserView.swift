@@ -16,49 +16,59 @@ struct CreateUserView: View {
     @State private var password: String = ""
     
     var body: some View {
-        VStack (alignment: .center){
-            Text("Creation d'un compte").padding()
+        
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.purple, .white]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             
-            TextField("Pseudo...", text: $pseudo).padding().background(Color.gray).cornerRadius(20.0)
-            SecureField("Password ...", text: $password).padding().background(Color.gray).cornerRadius(20.0)
             
-            HStack{
-                Button(action: {
-                    if (self.password != "" && self.pseudo != ""){
-                        print("data checked")
-                        if UserQueryService().createUser(pseudo: self.pseudo, password: self.password){
-                            self.isPresented.toggle()
-                        }
-                    }else{
-                        self.showingAlert = true
-                    }
-                    
-                }) {
-                    Text("Create")
-                }.alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
-            }.padding().background(Color.orange).foregroundColor(.white).cornerRadius(15)
+            VStack (){
+                Text("Sign In or Login").padding()
                 
-                Button(action: {
-                    
-                    
-                    if (self.password != "" && self.pseudo != ""){
-                        print("data checked")
-                        if UserQueryService().login(pseudo: self.pseudo, password: self.password){
-                            self.isPresented.toggle()
+                TextField("Pseudo...", text: $pseudo).padding().background(Color.white).cornerRadius(20.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                SecureField("Password ...", text: $password).padding().background(Color.white).cornerRadius(20.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                
+                HStack{
+                    Button(action: {
+                        if (self.password != "" && self.pseudo != ""){
+                            print("data checked")
+                            if UserQueryService().createUser(pseudo: self.pseudo, password: self.password){
+                                self.isPresented.toggle()
+                            }
+                        }else{
+                            self.showingAlert = true
                         }
-                    }else{
-                        self.showingAlert = true
-                    }
-                }) {
-                    Text("Login")
-                }.alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
-            }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15)
+                        
+                    }) {
+                        Text("Create")
+                    }.alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
+                }.padding().background(Color.orange).foregroundColor(.white).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                    
+                    Button(action: {
+                        
+                        
+                        if (self.password != "" && self.pseudo != ""){
+                            print("data checked")
+                            if UserQueryService().login(pseudo: self.pseudo, password: self.password){
+                                self.isPresented.toggle()
+                            }
+                        }else{
+                            self.showingAlert = true
+                        }
+                    }) {
+                        Text("Login")
+                    }.alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
+                }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                }
+                
+                
             }
-            
-            
         }
+        
+        
+        
         
     }
 }
