@@ -23,11 +23,12 @@ struct ResearchBarView: View {
                 TextField("search", text: $searchTerm, onEditingChanged: { isEditing in
                      self.showCancelButton = true
                  }, onCommit: {
-                     print("onCommit")
+                    self.remarkSetSelected.remarkSet = self.remarkSetBase.filterBy(words: self.searchTerm)
                  }).foregroundColor(.primary)
 
                 Button(action: {
-                     self.searchTerm = ""
+                    self.searchTerm = ""
+                    self.remarkSetSelected.remarkSet = self.remarkSetBase.remarkSet
                  }) {
                     Image(systemName: "xmark.circle.fill").opacity(searchTerm == "" ? 0 : 1)
                  }
