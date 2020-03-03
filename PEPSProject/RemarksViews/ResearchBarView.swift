@@ -38,7 +38,7 @@ struct ResearchBarView: View {
              .foregroundColor(.secondary)
              .background(Color(.secondarySystemBackground))
              .cornerRadius(10.0)
-            OrderByView()
+                OrderByView(remarkSetSelected : self.remarkSetSelected)
             }
 
             FiltersView(remarkSetBase : self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)

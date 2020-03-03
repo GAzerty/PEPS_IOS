@@ -10,6 +10,8 @@ import SwiftUI
 
 struct OrderByView: View {
     @State var expand = false
+    @ObservedObject var remarkSetSelected : RemarkSet
+
     var body : some View {
         VStack(spacing: 10){
             HStack{
@@ -20,12 +22,17 @@ struct OrderByView: View {
             }
             if expand{
                 
-                Button(action : {self.expand.toggle()}){
+                Button(action : {
+                    self.expand.toggle()
+                    self.remarkSetSelected.remarkSet = self.remarkSetSelected.orderBy(order: 1)
+                }){
                     Text("recent")
-                }.foregroundColor(.black)
-                Button(action : {self.expand.toggle()}){
+                    }.foregroundColor(.black).tag(1)
+                Button(action : {self.expand.toggle()
+                    self.remarkSetSelected.remarkSet = self.remarkSetSelected.orderBy(order: 2)
+                }){
                     Text("recommanded")
-                }.foregroundColor(.black)
+                    }.foregroundColor(.black).tag(2)
             
             }
            
@@ -36,6 +43,6 @@ struct OrderByView: View {
 
 struct OrderByView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderByView()
+        OrderByView(remarkSetSelected : RemarkSet())
     }
 }
