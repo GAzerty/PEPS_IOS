@@ -32,7 +32,15 @@ struct CreateAnswerView: View {
                     let idCategory = self.categorySet.categorySet[self.selectedidCategory].idCategory
                     if let idAnswerCreated = AnswerQueryService().createAnswser(answser: self.answer, idCategory: idCategory){
                         if RemarkQueryService().linkAnswserToRemark(idRemark: self.remark.idRemark, idAnswer: idAnswerCreated){
-                                print("Linked")
+                            guard let categAnswer = CategoryQueryService().getCategoryById(idCategory: idCategory) else{
+                             return
+                            }
+                            guard let user = UserQueryService().getUserLogged() else{
+                             return
+                            }
+                            let newAnswer = Answer(idAnswer: idAnswerCreated, answer: self.answer, category: categAnswer, user: user)
+                            self.remark.answerSet.addAnswers(answer: newAnswer)
+                            self.isPresented.toggle()
                         }
                     }
                 }else{

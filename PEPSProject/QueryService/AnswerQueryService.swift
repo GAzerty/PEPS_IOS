@@ -36,29 +36,17 @@ class AnswerQueryService {
         
         responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers", httpMethod: "POST", httpBody: jsonData)
         
-        //idAnswer = 20
         if let responseData = responseDataOpt{
-            print(responseData)
+            
             let message = responseData["message"] as! String
             
             if message == "Success"{
                 print(message)
-                if let dataT = responseData["data"] as? [Any]{
-                    print(dataT)
-                    if let content = dataT as? [String: Any]{
-                        
-                        print(content)
-                        //Modifier le retour de l'API
-                        
-                        
-                    }
-                    /*for remark in dataT{
-                        if let newRemark = remark as? [String:Any]{
-                    }*/
+                if let dataT = responseData["data"] as? [String: Any]{
+                    idAnswer = dataT["idAnswer"] as? Int
                 }
             }
         }
-         
         return idAnswer
     }
     
