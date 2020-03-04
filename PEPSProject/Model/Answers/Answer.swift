@@ -24,4 +24,13 @@ class Answer : Identifiable{
         self.nbLike = nbLike
     }
     
+    func incrementLike(){
+        self.nbLike+=1
+    }
+    
+    func decrementLike(){
+        self.nbLike = self.nbLike - 1
+    }
+
+    
 }

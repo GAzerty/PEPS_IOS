@@ -16,18 +16,24 @@ struct AnswerRowView: View {
             HStack{
                 Image(systemName: "person")
                 Text("\(answer.user.pseudo ?? "pseudo")")
-                //Text("pseudo")
             }.padding(10)
            
             Text("\(answer.answer)").padding(10)
-            //Text("answer.answer").padding(10)
             
             HStack{
                 Spacer()
                 HStack{
                     Text("\(answer.nbLike)")
                     Image(systemName: "volume")
-                }.padding(10.0)
+                }.onTapGesture {
+                    if(UserQueryService().isLogged()){
+                        if !AnswerQueryService().addLikeAnswer(answer: self.answer){
+                            if AnswerQueryService().removeLikeAnswer(answer: self.answer){
+                            }
+                        }
+                    }
+                }.padding(10)
+
             }
         }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }

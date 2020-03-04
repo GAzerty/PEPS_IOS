@@ -71,4 +71,61 @@ class AnswerQueryService {
         return nbLike
     }
     
+    func addLikeAnswer(answer: Answer) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let addLikeAnswer = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(addLikeAnswer)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(answer.idAnswer)+"/likes", httpMethod: "POST", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+                answer.incrementLike()
+            }
+        }
+        
+        return requestDone
+    }
+    
+    
+    func removeLikeAnswer(answer: Answer) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let addLikeAnswer = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(addLikeAnswer)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(answer.idAnswer)+"/likes", httpMethod: "DELETE", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+                answer.decrementLike()
+            }
+        }
+        
+        return requestDone
+    }
+    
 }
