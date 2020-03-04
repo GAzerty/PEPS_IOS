@@ -95,8 +95,11 @@ class RemarkQueryService {
                         
                         if let category = CategoryQueryService().getCategoryById(idCategory:idCategory){
                             if let user = UserQueryService().getUserById(idUser: idUser){
-                                let answ = Answer(idAnswer: idAnswer, answer: answer, category: category, user: user)
-                                answerSet.append(answ)
+                                if let nbLike = AnswerQueryService().getNbLikeAnswer(idAnswer: idAnswer){
+                                    let answ = Answer(idAnswer: idAnswer, answer: answer, category: category, user: user, nbLike: nbLike)
+                                    answerSet.append(answ)
+                                }
+                                
                             }
                         }
                     }

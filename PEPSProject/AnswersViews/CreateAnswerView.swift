@@ -38,7 +38,10 @@ struct CreateAnswerView: View {
                             guard let user = UserQueryService().getUserLogged() else{
                              return
                             }
-                            let newAnswer = Answer(idAnswer: idAnswerCreated, answer: self.answer, category: categAnswer, user: user)
+                            guard let nbLike = AnswerQueryService().getNbLikeAnswer(idAnswer: idAnswerCreated) else{
+                             return
+                            }
+                            let newAnswer = Answer(idAnswer: idAnswerCreated, answer: self.answer, category: categAnswer, user: user,nbLike: nbLike)
                             self.remark.answerSet.addAnswers(answer: newAnswer)
                             self.isPresented.toggle()
                         }

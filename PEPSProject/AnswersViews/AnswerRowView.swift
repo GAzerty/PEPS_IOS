@@ -25,7 +25,7 @@ struct AnswerRowView: View {
             HStack{
                 Spacer()
                 HStack{
-                    Text("answer.nbCheck")
+                    Text("\(answer.nbLike)")
                     Image(systemName: "volume")
                 }.padding(10.0)
             }

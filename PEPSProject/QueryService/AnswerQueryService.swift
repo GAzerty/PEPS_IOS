@@ -50,4 +50,25 @@ class AnswerQueryService {
         return idAnswer
     }
     
+    func getNbLikeAnswer(idAnswer: Int) -> Int?{
+        var nbLike : Int?
+        var responseDataOpt : [String: Any]?
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(idAnswer)+"/likes", httpMethod: "GET", httpBody: nil)
+        
+        if let responseData = responseDataOpt{
+            print(responseData)
+            let message = responseData["message"] as! String
+            
+            if message == "Success"{
+                print(message)
+                if let dataT = responseData["data"] as? [String: Any]{
+                    let count = dataT["count"] as! String
+                    nbLike = Int(count) ?? 0
+                }
+            }
+        }
+        return nbLike
+    }
+    
 }
