@@ -66,7 +66,7 @@
 		8638E02C2405AEF600ACE464 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8638E0322405B92C00ACE464 /* Remark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remark.swift; sourceTree = "<group>"; };
 		86437766240AB6D500FEF2E7 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
-		864A08F4240D8C57004F2439 /* CreateRemarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRemarkView.swift; sourceTree = "<group>"; };
+		864A08F4240D8C57004F2439 /* CreateRemarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRemarkView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		8669165B2405738C0029E5AC /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 		8669165D240573A40029E5AC /* ReadUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadUserView.swift; sourceTree = "<group>"; };
 		8669165F240573FA0029E5AC /* ListRemarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRemarksView.swift; sourceTree = "<group>"; };

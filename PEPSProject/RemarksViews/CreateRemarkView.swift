@@ -19,19 +19,22 @@ struct CreateRemarkView: View {
     
     
     var body: some View {
-        
         VStack{
-            Text("Create a new Remark")
-            TextField("Post you remark...", text: $remark).padding().background(Color.gray).cornerRadius(20.0)
+            Text("Create a new Remark").font(.title).foregroundColor(.purple)
+                .cornerRadius(10.0).padding()
+            TextField("Post your remark...", text: $remark).padding().background(Color(.secondarySystemBackground)).cornerRadius(10)
+            
             Picker(selection: $selectedidCategory, label: Text("Category")){
                 ForEach(0 ..< categorySet.categorySet.count) {
-                    Text("\(self.categorySet.categorySet[$0].lib)")
+                    Text("\(self.categorySet.categorySet[$0].lib)").padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground)).cornerRadius(10)
                 }
                 
                 
                 
-            }
-            TextField("Location...", text: $location).padding().background(Color.gray).cornerRadius(20.0)
+            }.padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground))
+            .cornerRadius(10)
+            
+            TextField("Location...", text: $location).padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground)).cornerRadius(10)
             
             Button(action:{
                 if self.remark != "" && self.location != ""{
@@ -44,11 +47,14 @@ struct CreateRemarkView: View {
                 }
             })
             {
-                Text("Send")
+                Text("Send").font(.title).padding(10).foregroundColor(.purple).background(Color.white)
+                    .cornerRadius(20)
+                    .shadow(color: .gray, radius: 3)
             }.alert(isPresented: $showingAlert) {
                 Alert(title: Text("Empty Field"), message: Text("Please fill the fields"), dismissButton: .default(Text("Got it !")))
             }
-        }
+            
+        }.padding(10)
         
     }
 }
