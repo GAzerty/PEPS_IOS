@@ -16,14 +16,11 @@ struct ContentView: View {
         
         VStack{
             HStack{
-                Text(" WELCOME TO PEPS").padding()
+                Text("PEPS").padding(10).font(.title)
+                Spacer()
                 Button(action:{self.isShown.toggle()}){
                     VStack{
                         Image(systemName: "person")
-                        .padding()
-                        .foregroundColor(.black)
-                        .background(Color.gray)
-                        .cornerRadius(40)
                     }
                 }.sheet(isPresented: self.$isShown){
                     
@@ -33,9 +30,12 @@ struct ContentView: View {
                     }else{
                         CreateUserView(isPresented: self.$isShown)
                     }
-                }
-                   
-            }
+                }.padding()
+                .foregroundColor(.black)
+                .background(Color.white)
+                .cornerRadius(40)
+                .shadow(color: .gray, radius: 2, x: 1, y: 1)
+            }.padding(10)
             VStack{
                 ListRemarksView()
             }

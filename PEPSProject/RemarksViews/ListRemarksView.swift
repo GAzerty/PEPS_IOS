@@ -12,47 +12,46 @@ struct ListRemarksView: View {
     
     @ObservedObject var remarkSetBase : RemarkSet = RemarkSet()
     @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet()
-    
     @State var isShown: Bool = false
     
     var body: some View {
-        NavigationView{
-            ZStack(alignment: .bottomTrailing){
-                VStack{
-                    ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)
-                    List(self.remarkSetSelected.remarkSet) {
-                        remark in VStack{
-                            RemarkRowView(remark: remark)
-                        }
+        
+        ZStack(alignment: .bottomTrailing){
+            VStack{
+                ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)
+                List(self.remarkSetSelected.remarkSet) {
+                    remark in VStack{
+                        RemarkRowView(remark: remark)
                     }
-                    
                 }
-                VStack {
-                    Spacer()
-                    HStack {
-                        Button(action:{self.isShown.toggle()}){
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
-                                    .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
-                                
-                                Image(systemName: "plus")
-                                    .imageScale(.large)
-                                    .foregroundColor(.purple)
-                            }.padding()
-                        }.sheet(isPresented: self.$isShown){
+                
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Button(action:{self.isShown.toggle()}){
+                        ZStack {
+                            Circle()
+                                .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
+                                .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
                             
-                            if(UserQueryService().isLogged()){
-                                CreateRemarkView(isPresented: self.$isShown)
-                            }else{
-                                CreateUserView(isPresented: self.$isShown)
-                            }
+                            Image(systemName: "plus")
+                                .imageScale(.large)
+                                .foregroundColor(.purple)
+                        }.padding()
+                    }.sheet(isPresented: self.$isShown){
+                        
+                        if(UserQueryService().isLogged()){
+                            CreateRemarkView(isPresented: self.$isShown)
+                        }else{
+                            CreateUserView(isPresented: self.$isShown)
                         }
                     }
                 }
             }
         }
     }
+    
     
 }
 
