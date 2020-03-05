@@ -20,6 +20,7 @@
 		868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */; };
 		86AB3A0C240EB17D0006DE05 /* CreateAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AB3A0B240EB17D0006DE05 /* CreateAnswerView.swift */; };
 		86C7B97424119BC100932ADE /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C7B97324119BC100932ADE /* SideMenuView.swift */; };
+		86C7B97A2411AEE700932ADE /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C7B9792411AEE700932ADE /* ChangePasswordView.swift */; };
 		86F38E57240671F500662E06 /* RemarkSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F38E56240671F500662E06 /* RemarkSet.swift */; };
 		86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F38E58240676C900662E06 /* RemarkRowView.swift */; };
 		86FBCF3D240BEBB30012D03D /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBCF3C240BEBB30012D03D /* Answer.swift */; };
@@ -75,6 +76,7 @@
 		868D6D0C2407F46100D159F2 /* RemarkQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkQueryService.swift; sourceTree = "<group>"; };
 		86AB3A0B240EB17D0006DE05 /* CreateAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAnswerView.swift; sourceTree = "<group>"; };
 		86C7B97324119BC100932ADE /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		86C7B9792411AEE700932ADE /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		86F38E56240671F500662E06 /* RemarkSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkSet.swift; sourceTree = "<group>"; };
 		86F38E58240676C900662E06 /* RemarkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkRowView.swift; sourceTree = "<group>"; };
 		86FBCF3C240BEBB30012D03D /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				8669165B2405738C0029E5AC /* CreateUserView.swift */,
 				8669165D240573A40029E5AC /* ReadUserView.swift */,
+				86C7B9792411AEE700932ADE /* ChangePasswordView.swift */,
 			);
 			path = UsersViews;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				B2927B362409560E0077057C /* Category.swift in Sources */,
 				B2927B3C240967450077057C /* FiltersView.swift in Sources */,
 				86FCED8724055CA800E46817 /* AppDelegate.swift in Sources */,
+				86C7B97A2411AEE700932ADE /* ChangePasswordView.swift in Sources */,
 				86F38E59240676C900662E06 /* RemarkRowView.swift in Sources */,
 				86FBCF3D240BEBB30012D03D /* Answer.swift in Sources */,
 				868D6D0D2407F46100D159F2 /* RemarkQueryService.swift in Sources */,
