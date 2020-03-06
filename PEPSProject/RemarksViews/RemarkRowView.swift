@@ -12,7 +12,7 @@ struct RemarkRowView: View {
     
     var remark: Remark!
     @State var isShown: Bool = false
-    
+    var isUserRemarks : Bool!
     var body: some View {
         
         VStack{
@@ -38,16 +38,6 @@ struct RemarkRowView: View {
             
             HStack{
                 
-                /*Button(action:{self.isShown.toggle()
-                }){
-                    HStack{
-                        Text("\(remark.answerSet.answerSet.count)")
-                        Image(systemName: "message").foregroundColor(.blue)
-                    }
-                }.sheet(isPresented: self.$isShown){
-                    ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
-                }.foregroundColor(.purple)*/
-                
                 HStack{
                     Text("\(remark.answerSet.answerSet.count)")
                     Image(systemName: "message").foregroundColor(.blue)
@@ -58,7 +48,15 @@ struct RemarkRowView: View {
                 }.sheet(isPresented: self.$isShown){
                     ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
                 }
-                Spacer()
+                if(self.isUserRemarks){
+                    Spacer()
+                    Image(systemName: "square.and.pencil").foregroundColor(.green)
+                    Spacer()
+                    Image(systemName: "trash").foregroundColor(.red)
+                    Spacer()
+                }else{
+                    Spacer()
+                }
                 HStack{
                     Text("\(remark.nbEncounter)")
                     Image(systemName: "volume")
@@ -70,21 +68,6 @@ struct RemarkRowView: View {
                         }
                     }
                 }
-                
-                /*Button(action:{
-                    if(UserQueryService().isLogged()){
-                        if !RemarkQueryService().addEncounter(remark: self.remark){
-                            if RemarkQueryService().removeEncounter(remark: self.remark){
-                            }
-                        }
-                    }
-                }){
-                    HStack{
-                        Text("\(remark.nbEncounter)")
-                        Image(systemName: "volume")
-                    }
-                }*/
-                
             }.padding(10.0)
             
         }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
