@@ -47,6 +47,29 @@ struct ListRemarksView: View {
                             CreateUserView(isPresented: self.$isShown)
                         }
                     }
+                    /*ZStack {
+                        Circle()
+                            .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
+                            .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                        
+                        Image(systemName: "plus")
+                            .imageScale(.large)
+                            .foregroundColor(.purple)
+                    }.contextMenu{
+                        VStack{
+                            Button(action:{self.isShown.toggle()}){
+                                Text("New Remark")
+                            }.sheet(isPresented: self.$isShown){
+                                
+                                if(UserQueryService().isLogged()){
+                                    CreateRemarkView(isPresented: self.$isShown)
+                                }else{
+                                    CreateUserView(isPresented: self.$isShown)
+                                }
+                            }
+
+                        }
+                    }*/
                 }
             }
         }
