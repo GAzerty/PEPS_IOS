@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct AnswerRowView: View {
+    
     var answer: Answer!
+    var isUserAnswers : Bool!
     
     var body: some View {
         VStack(alignment: .leading){
@@ -21,7 +23,15 @@ struct AnswerRowView: View {
             Text("\(answer.answer)").padding(10)
             
             HStack{
-                Spacer()
+                if(isUserAnswers){
+                    Spacer()
+                    Image(systemName: "square.and.pencil").foregroundColor(.green)
+                    Spacer()
+                    Image(systemName: "trash").foregroundColor(.red)
+                    Spacer()
+                }else{
+                    Spacer()
+                }
                 HStack{
                     Text("\(answer.nbLike)")
                     Image(systemName: "volume")

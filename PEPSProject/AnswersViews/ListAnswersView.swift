@@ -16,11 +16,10 @@ struct ListAnswersView: View {
             List(self.answerSet.answerSet) {
                 answer in
                 VStack{
-                    AnswerRowView(answer: answer)
+                    AnswerRowView(answer: answer,isUserAnswers: false)
                 }
             }
         }
-        
     }
 }
 
