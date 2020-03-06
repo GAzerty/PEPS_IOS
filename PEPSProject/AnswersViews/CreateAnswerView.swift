@@ -15,7 +15,7 @@ struct CreateAnswerView: View {
     @State var answer : String = ""
     var remark : Remark!
     @State var selectedidCategory: Int = 0
-    var categorySet : CategorySet = CategorySet()
+    var categorySet : CategorySet = CategorySet(type: "answer")
     
     var body: some View {
         VStack{

@@ -61,4 +61,60 @@ class CategoryQueryService {
     }
     
     
+    //Return all the categories used for a answer.
+    func getAllAnswersCategories() -> [Category]{
+        var categorySet : [Category] = [Category]()
+         var responseDataOpt : [String: Any]?
+         
+         responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/categories/answers", httpMethod: "GET", httpBody: nil)
+        
+         if let data = responseDataOpt {
+             
+             if let dataT = data["data"] as? [Any]{
+                 for category in dataT{
+                     if let newCategory = category as? [String:Any]{
+                         let idCategory = newCategory["idCategory"] as! Int
+                         let lib = newCategory["lib"] as! String
+                         let type = newCategory["type"] as! String
+                                            
+                         let c = Category(idCategory: idCategory, lib: lib, type: type)
+                                             
+                         categorySet.append(c)
+                                             
+                     }
+                 }
+             }
+         }
+         return categorySet
+    }
+    
+    
+    //Return all the categories used for a remark.
+    func getAllRemarksCategories() -> [Category]{
+        var categorySet : [Category] = [Category]()
+         var responseDataOpt : [String: Any]?
+         
+         responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/categories/remarks", httpMethod: "GET", httpBody: nil)
+        
+         if let data = responseDataOpt {
+             
+             if let dataT = data["data"] as? [Any]{
+                 for category in dataT{
+                     if let newCategory = category as? [String:Any]{
+                         let idCategory = newCategory["idCategory"] as! Int
+                         let lib = newCategory["lib"] as! String
+                         let type = newCategory["type"] as! String
+                                            
+                         let c = Category(idCategory: idCategory, lib: lib, type: type)
+                                             
+                         categorySet.append(c)
+                                             
+                     }
+                 }
+             }
+         }
+         return categorySet
+    }
+    
+    
 }

@@ -15,7 +15,7 @@ struct CreateRemarkView: View {
     @State var remark: String = ""
     @State var selectedidCategory: Int = 0
     @State var location: String = ""
-    var categorySet : CategorySet = CategorySet()
+    var categorySet : CategorySet = CategorySet(type: "remark")
     
     
     var body: some View {

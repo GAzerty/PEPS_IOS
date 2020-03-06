@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FiltersView: View {
-    @ObservedObject var categorySet : CategorySet = CategorySet()
+    @ObservedObject var categorySet : CategorySet = CategorySet(type: "remark")
     @State var categoriesSelected : [Int] = [Int]()
     @ObservedObject var remarkSetBase : RemarkSet
     @ObservedObject var remarkSetSelected : RemarkSet
