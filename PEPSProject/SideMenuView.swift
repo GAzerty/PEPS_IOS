@@ -19,13 +19,12 @@ struct SideMenuView: View {
             .edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading){
-                HStack{
+                VStack{
                     if(self.isLogged){
-                        Text("Your are logged").foregroundColor(.white).font(.title)
+                        ReadUserView(user: UserQueryService().getUserLogged())
                         Spacer()
                     }else{
                         Text("Please Login !").foregroundColor(.white).font(.title)
-                        Spacer()
                     }
                    
                 }.padding(10)

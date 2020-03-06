@@ -17,20 +17,20 @@ struct ReadUserView: View {
         VStack{
             
             Text("Infos Personnelles:").padding()
-            Text("Pseudo: "+user.pseudo!)
+            Text("Pseudo: "+self.user.pseudo!)
             
-            
-            HStack{
-                Button(action: {}) {
-                Text("Modifier")
-                    }.padding()
-                Button(action: {}) {
-                Text("Supprimer")
-                }.padding().foregroundColor(.red)
-            }
-            
+            Button(action: {}) {
             Text("Mes Posts:").padding()
-            //ListRemarksView(user)
+                }.padding()
+            
+            Button(action: {}) {
+            Text("Password")
+                }.padding()
+            
+            Button(action: {}) {
+            Text("Delete Account")
+            }.padding().foregroundColor(.red)
+            
         }
     }
 }
