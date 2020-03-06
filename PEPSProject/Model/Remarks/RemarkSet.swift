@@ -17,7 +17,11 @@ class RemarkSet: ObservableObject {
         addRemarks(remarkTab: RemarkQueryService().getAllRemarks())
     }
     
-    init(idUser: Int){}
+    init(idUser: Int?){
+        if let iduser = idUser{
+            addRemarks(remarkTab: RemarkQueryService().getAllRemarksByUser(idUserChoosen: iduser))
+        }
+    }
     
     func addRemarks(remark: Remark){
         self.remarkSet.append(remark)
