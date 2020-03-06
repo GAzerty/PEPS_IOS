@@ -128,4 +128,60 @@ class AnswerQueryService {
         return requestDone
     }
     
+    
+    
+    func updateAnswer(idAnswer: Int, answer: String, idCategory: Int) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let updateAnswer = createAnswserJSON(answer: answer, idCategory: idCategory, token: token)
+                jsonData = try JSONEncoder().encode(updateAnswer)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(idAnswer), httpMethod: "PUT", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+            }
+        }
+        
+        return requestDone
+    }
+    
+    func deleteAnswer(idAnswer: Int) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let removeAnswer = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(removeAnswer)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(idAnswer), httpMethod: "DELETE", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+            }
+        }
+        
+        return requestDone
+    }
+    
 }
