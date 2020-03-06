@@ -12,6 +12,7 @@ struct SideMenuView: View {
     
     @State var isLogged : Bool = UserQueryService().isLogged()
     
+    
     var body: some View {
         
         ZStack{

@@ -11,6 +11,7 @@ import SwiftUI
 struct ReadUserView: View {
     
     var user: User!
+    @State var isShown: Bool = false
     
     var body: some View {
         
@@ -19,9 +20,11 @@ struct ReadUserView: View {
             Text("Infos Personnelles:").padding()
             Text("Pseudo: "+self.user.pseudo!)
             
-            Button(action: {}) {
-            Text("Mes Posts:").padding()
-                }.padding()
+            Button(action: {self.isShown.toggle()}) {
+                Text("Mes Posts:").padding()
+            }.sheet(isPresented: self.$isShown){
+                ListUserRemarksView()
+            }
             
             Button(action: {}) {
             Text("Password")
