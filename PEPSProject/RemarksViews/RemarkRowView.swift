@@ -12,6 +12,7 @@ struct RemarkRowView: View {
     
     var remark: Remark!
     @State var isShown: Bool = false
+    @State var isShown2: Bool = false
     var isUserRemarks : Bool!
     var body: some View {
         
@@ -43,16 +44,22 @@ struct RemarkRowView: View {
                     Image(systemName: "message").foregroundColor(.blue)
                 }.onTapGesture {
                     self.isShown.toggle()
-                    print(self.isShown)
-                    
                 }.sheet(isPresented: self.$isShown){
                     ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
                 }
                 if(self.isUserRemarks){
                     Spacer()
-                    Image(systemName: "square.and.pencil").foregroundColor(.green)
+                    Image(systemName: "square.and.pencil").foregroundColor(.green).onTapGesture {
+                        self.isShown2.toggle()
+                    }.sheet(isPresented: self.$isShown2){
+                        CreateRemarkView(isPresented: self.$isShown2, remark: self.remark.remark, location: self.remark.location, isUpdateView: true, remarkUpdated: self.remark)
+                    }
                     Spacer()
-                    Image(systemName: "trash").foregroundColor(.red)
+                    Image(systemName: "trash").foregroundColor(.red).onTapGesture {
+                        if RemarkQueryService().deleteRemark(idRemark: self.remark.idRemark){
+                            print("deleted remark")
+                        }
+                    }
                     Spacer()
                 }else{
                     Spacer()

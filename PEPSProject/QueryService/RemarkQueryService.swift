@@ -286,4 +286,61 @@ class RemarkQueryService {
         
         return requestDone
     }
+    
+    func updateRemark(remark: Remark, remarkContent: String, idCategory: Int, location: String) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let updateRemark = createRemarkJSON(remark: remarkContent, idCategory: idCategory, token: token, location: location)
+                jsonData = try JSONEncoder().encode(updateRemark)
+            }
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/"+String(remark.idRemark), httpMethod: "PUT", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+                remark.remark = remarkContent
+                remark.category = idCategory
+                remark.location = location
+            }
+        }
+        
+        return requestDone
+    }
+    
+    
+    func deleteRemark(idRemark: Int) -> Bool{
+        var requestDone : Bool = false
+        var responseDataOpt : [String: Any]?
+        
+        var jsonData : Data?
+        do {
+            if let token = UserQueryService().getToken(){
+                let deleteRemark = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(deleteRemark)
+            }
+        } catch {
+            print(error)
+        }
+        
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/remarks/"+String(idRemark), httpMethod: "DELETE", httpBody: jsonData)
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+            }
+        }
+        
+        return requestDone
+    }
+    
 }
