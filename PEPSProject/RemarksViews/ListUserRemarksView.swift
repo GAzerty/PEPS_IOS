@@ -12,12 +12,13 @@ struct ListUserRemarksView: View {
     @ObservedObject var remarkSetBase : RemarkSet = RemarkSet(idUser: UserQueryService().getUserLogged()?.idUser)
     @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet(idUser: UserQueryService().getUserLogged()?.idUser)
     @State var isShown: Bool = false
+    @State var personalRemark: Bool = false
     
     var body: some View {
         
         ZStack(alignment: .bottomTrailing){
             VStack{
-                ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)
+                ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark)
                 List(self.remarkSetSelected.remarkSet) {
                     remark in VStack{
                         RemarkRowView(remark: remark, isUserRemarks: true)

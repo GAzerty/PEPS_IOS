@@ -14,11 +14,37 @@ struct FiltersView: View {
     @ObservedObject var remarkSetBase : RemarkSet
     @ObservedObject var remarkSetSelected : RemarkSet
     @State var arePressed : [Int] = [Int]()
+    @Binding var personalRemark: Bool
     
     var body: some View {
         
         ScrollView(.horizontal) {
             HStack{
+                if(UserQueryService().isLogged()){
+                    Button(action:{
+                        self.personalRemark.toggle()
+                        if(self.personalRemark){
+                            let userID = UserQueryService().getUserLogged()?.idUser
+                            if let idUser = userID{
+                                self.remarkSetBase.reset()
+                                self.remarkSetBase.addRemarks(remarkTab: RemarkQueryService().getAllRemarksByUser(idUserChoosen: idUser))
+                                self.remarkSetSelected.reset()
+                                self.remarkSetSelected.addRemarks(remarkTab: RemarkQueryService().getAllRemarksByUser(idUserChoosen: idUser))
+                            }
+                        }else{
+                            self.remarkSetBase.reset()
+                            self.remarkSetSelected.reset()
+                            self.remarkSetBase.addRemarks(remarkTab: RemarkQueryService().getAllRemarks())
+                            self.remarkSetSelected.addRemarks(remarkTab: RemarkQueryService().getAllRemarks())
+                        }
+                        
+                        
+                    }){
+                        Text("My Posts")
+                }.padding(5).foregroundColor(.secondary).background(Color(.secondarySystemBackground)).cornerRadius(50)
+                }
+                
+                
                 ForEach(self.categorySet.categorySet.indices){
                     i in
                    
@@ -44,10 +70,10 @@ struct FiltersView: View {
     }
 }
 
-struct FiltersView_Previews: PreviewProvider {
+/*struct FiltersView_Previews: PreviewProvider {
     static var previews: some View {
         FiltersView(remarkSetBase: RemarkSet(),remarkSetSelected: RemarkSet())
     }
-}
+}*/
 
 

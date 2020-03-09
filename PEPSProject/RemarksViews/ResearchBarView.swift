@@ -14,7 +14,8 @@ struct ResearchBarView: View {
     @ObservedObject var remarkSetBase : RemarkSet
     @ObservedObject var remarkSetSelected : RemarkSet
     @State private var showDetail = false
-   
+    @Binding var personalRemark: Bool
+    
     var body: some View {
         VStack{
             HStack{
@@ -42,14 +43,14 @@ struct ResearchBarView: View {
                 OrderByView(remarkSetSelected : self.remarkSetSelected)
             }
 
-            FiltersView(remarkSetBase : self.remarkSetBase,remarkSetSelected: self.remarkSetSelected)
+            FiltersView(remarkSetBase : self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark)
         }.padding(10)
     }
 }
 
-struct ResearchBarView_Previews: PreviewProvider {
+/*struct ResearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        ResearchBarView(remarkSetBase: RemarkSet(),remarkSetSelected: RemarkSet())
+        ResearchBarView(remarkSetBase: RemarkSet(),remarkSetSelected: RemarkSet(), personalRemark: false)
     }
-}
+}*/
 

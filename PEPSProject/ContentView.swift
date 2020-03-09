@@ -56,6 +56,7 @@ struct ContentView: View {
                 }.frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: self.showMenu ? geometry.size.width/2 : 0)
                     .disabled(self.showMenu ? true : false)
+                    .background(self.showMenu ? Color(.secondarySystemBackground) : Color.white)
                 
                 if self.showMenu {
                     SideMenuView()

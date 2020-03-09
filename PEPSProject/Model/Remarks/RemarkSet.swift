@@ -54,4 +54,8 @@ class RemarkSet: ObservableObject {
         }
         return remarkOrderer
     }
+    
+    func reset(){
+        self.remarkSet = [Remark]()
+    }
 }
