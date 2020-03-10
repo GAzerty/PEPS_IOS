@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RemarkRowView: View {
     
-    var remark: Remark!
+    @ObservedObject var remark: Remark
     @State var isShown: Bool = false
     @State var isShown2: Bool = false
     var isUserRemarks : Bool!
@@ -83,8 +83,8 @@ struct RemarkRowView: View {
 }
 
 
-struct RemarkRowView_Previews: PreviewProvider {
+/*struct RemarkRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RemarkRowView()
+        RemarkRowView(remark: <#Remark#>)
     }
-}
+}*/

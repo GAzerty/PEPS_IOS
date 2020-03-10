@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Answer : Identifiable{
+class Answer : Identifiable, ObservableObject{
     
     var idAnswer : Int
     var answer : String
     var category : Int
     var user : User
-    var nbLike : Int
+    @Published var nbLike : Int
     
     init(idAnswer: Int, answer: String, category: Int, user: User, nbLike: Int){
         self.idAnswer=idAnswer

@@ -18,7 +18,7 @@ struct CreateUserView: View {
     var body: some View {
         
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [.purple, .white]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color(UIColor(red: 49/255, green: 32/255, blue: 97/255, alpha: 1.0)),Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)),Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)),Color(UIColor(red: 252/255, green: 239/255, blue: 245/255, alpha: 1.0)),.white]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
             
@@ -34,6 +34,7 @@ struct CreateUserView: View {
                 SecureField("Password ...", text: $password).padding().background(Color.white).cornerRadius(20.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 
                 HStack{
+                    
                     Button(action: {
                         if (self.password != "" && self.pseudo != ""){
                             print("data checked")
@@ -48,7 +49,7 @@ struct CreateUserView: View {
                         Text("Create")
                     }.alert(isPresented: $showingAlert) {
                         Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
-                }.padding().background(Color.orange).foregroundColor(.white).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                }.padding().background(Color.white).foregroundColor(.blue).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
                     
                     Button(action: {
                         
@@ -65,11 +66,11 @@ struct CreateUserView: View {
                         Text("Login")
                     }.alert(isPresented: $showingAlert) {
                         Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
-                }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                }.padding().background(Color.white).foregroundColor(.green).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 }
                 
                 
-            }
+            }.padding(20)
         }
         
         

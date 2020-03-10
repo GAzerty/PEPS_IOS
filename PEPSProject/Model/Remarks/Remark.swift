@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Remark : Identifiable{
+class Remark : Identifiable, ObservableObject{
     
     var idRemark: Int
     var remark: String
@@ -17,7 +17,7 @@ class Remark : Identifiable{
     var answerSet: AnswerSet
     var location : String
     var date: Date
-    var nbEncounter : Int
+    @Published var nbEncounter : Int
     
     init(idRemark: Int, remark: String, idCategory: Int, user: User, answerSet: AnswerSet, location: String, date: Date, nbEncounter: Int){
         self.idRemark = idRemark

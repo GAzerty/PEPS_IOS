@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ReadRemarkView: View {
     
-    var remark : Remark!
+    @ObservedObject var remark : Remark
     @Binding var isPresentend : Bool
     @State var isShown: Bool = false
     
@@ -23,7 +23,7 @@ struct ReadRemarkView: View {
                     Text("Answsers").font(.largeTitle)
                     Spacer()
                 }.padding(10)
-                ListAnswersView(answerSet: self.remark!.answerSet)
+                ListAnswersView(answerSet: self.remark.answerSet)
             }
             VStack {
                 Spacer()

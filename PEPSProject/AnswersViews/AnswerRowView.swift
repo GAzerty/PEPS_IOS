@@ -11,7 +11,7 @@ import SwiftUI
 struct AnswerRowView: View {
     
     @State var isShown: Bool = false
-    var answer: Answer!
+    @ObservedObject var answer: Answer
     var isUserAnswers : Bool!
     
     var body: some View {
@@ -56,8 +56,8 @@ struct AnswerRowView: View {
     }
 }
 
-struct AnswerRowView_Previews: PreviewProvider {
+/*struct AnswerRowView_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerRowView()
+        AnswerRowView(answer: <#Answer#>)
     }
-}
+}*/
