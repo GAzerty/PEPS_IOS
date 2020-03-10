@@ -43,7 +43,7 @@ struct ListRemarksView: View {
                     }.sheet(isPresented: self.$isShown){
                         
                         if(UserQueryService().isLogged()){
-                            CreateRemarkView(isPresented: self.$isShown,isUpdateView: true)
+                            CreateRemarkView(isPresented: self.$isShown,isUpdateView: false)
                         }else{
                             CreateUserView(isPresented: self.$isShown)
                         }
