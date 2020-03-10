@@ -173,8 +173,8 @@ class RemarkQueryService {
     
     
     //Pre: The user is logged
-    func createRemark(remark: String, idCategory: Int, location: String)  -> Bool{
-        var requestDone : Bool = false
+    func createRemark(remark: String, idCategory: Int, location: String)  -> Int? {
+        var idRemark : Int?
         var responseDataOpt : [String: Any]?
         
         var jsonData : Data?
@@ -194,11 +194,14 @@ class RemarkQueryService {
             //print(responseData)
             let message = responseData["message"] as! String
             if message == "Success"{
-                requestDone = true
+                print(message)
+                if let dataT = responseData["data"] as? [String: Any]{
+                    idRemark = dataT["idRemark"] as? Int
+                }
             }
         }
         
-        return requestDone
+        return idRemark
         
     }
     
