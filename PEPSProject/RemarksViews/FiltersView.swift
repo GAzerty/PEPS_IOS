@@ -15,7 +15,6 @@ struct FiltersView: View {
     @ObservedObject var remarkSetSelected : RemarkSet
     @State var arePressed : [Int] = [Int]()
     @Binding var personalRemark: Bool
-    
     var body: some View {
         
         ScrollView(.horizontal) {
@@ -41,7 +40,7 @@ struct FiltersView: View {
                         
                     }){
                         Text("My Posts")
-                }.padding(5).foregroundColor(.secondary).background(Color(.secondarySystemBackground)).cornerRadius(50)
+                }.padding(5).foregroundColor(.secondary).background(self.personalRemark ? Color.gray : Color(.secondarySystemBackground)).cornerRadius(50)
                 }
                 
                 
