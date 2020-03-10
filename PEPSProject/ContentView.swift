@@ -23,7 +23,10 @@ struct ContentView: View {
             GeometryReader { geometry in
                 VStack{
                     HStack{
-                        Text("PEPS").padding(10).font(.title)
+                        Image("pepsColor")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80.0, height: 80.0)
                             .onTapGesture {
                             withAnimation {
                                 self.showMenu = true

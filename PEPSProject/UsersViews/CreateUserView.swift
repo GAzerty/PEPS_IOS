@@ -23,7 +23,12 @@ struct CreateUserView: View {
             
             
             VStack (){
-                Text("Sign In or Login").padding()
+                Image("pepsWhite")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200.0, height: 200.0)
+                
+                Text("Sign In or Login").padding().font(.title).foregroundColor(.white)
                 
                 TextField("Pseudo...", text: $pseudo).padding().background(Color.white).cornerRadius(20.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 SecureField("Password ...", text: $password).padding().background(Color.white).cornerRadius(20.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
