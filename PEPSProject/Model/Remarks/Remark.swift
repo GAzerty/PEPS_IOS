@@ -30,6 +30,19 @@ class Remark : Identifiable{
         self.nbEncounter = nbEncounter
     }
     
+    init(idRemark: Int, remark: String, idCategory: Int, user: User, location: String){
+        self.idRemark = idRemark
+        self.remark = remark
+        self.category = idCategory
+        self.user = user
+        self.answerSet = AnswerSet()
+        self.date = Date()
+        self.location = location
+        self.nbEncounter = 0
+    }
+    
+    
+    
     //format: String
     //example: format = "fr_FR"
     func getDateFormat(format: String) -> String{

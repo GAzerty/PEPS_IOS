@@ -18,6 +18,7 @@ struct CreateRemarkView: View {
     var categorySet : CategorySet = CategorySet(type: "remark")
     var isUpdateView : Bool = false
     var remarkUpdated : Remark?
+    @ObservedObject var remarkSet : RemarkSet = RemarkSet()
     
     var body: some View {
         VStack{
@@ -44,7 +45,12 @@ struct CreateRemarkView: View {
                 if self.remark != "" && self.location != ""{
                     let idCategory = self.categorySet.categorySet[self.selectedidCategory].idCategory
                     if(!self.isUpdateView){
-                        if RemarkQueryService().createRemark(remark: self.remark, idCategory: idCategory, location: self.location){
+                        if let idRemarkCreated = RemarkQueryService().createRemark(remark: self.remark, idCategory: idCategory, location: self.location){
+                            guard let user = UserQueryService().getUserLogged() else{
+                             return
+                            }
+                            let newRemark = Remark(idRemark: idRemarkCreated, remark: self.remark, idCategory: self.selectedidCategory, user: user, location: self.location)
+                            self.remarkSet.addRemarks(remark: newRemark)
                             self.isPresented.toggle()
                         }
                     }else{
