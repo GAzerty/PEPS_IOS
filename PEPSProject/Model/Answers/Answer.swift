@@ -12,11 +12,11 @@ class Answer : Identifiable{
     
     var idAnswer : Int
     var answer : String
-    var category : Category
+    var category : Int
     var user : User
     var nbLike : Int
     
-    init(idAnswer: Int, answer: String, category: Category, user: User, nbLike: Int){
+    init(idAnswer: Int, answer: String, category: Int, user: User, nbLike: Int){
         self.idAnswer=idAnswer
         self.answer=answer
         self.category=category

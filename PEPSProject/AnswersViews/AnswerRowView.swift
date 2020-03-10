@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AnswerRowView: View {
     
+    @State var isShown: Bool = false
     var answer: Answer!
     var isUserAnswers : Bool!
     
@@ -25,9 +26,15 @@ struct AnswerRowView: View {
             HStack{
                 if(isUserAnswers){
                     Spacer()
-                    Image(systemName: "square.and.pencil").foregroundColor(.green)
+                    Image(systemName: "square.and.pencil").foregroundColor(.green).onTapGesture {
+                        self.isShown.toggle()
+                    }.sheet(isPresented: self.$isShown){
+                        CreateAnswerView(isPresented: self.$isShown, answer: self.answer.answer, remark: nil, isUpdateView: true, answerUpdated: self.answer)
+                    }
                     Spacer()
-                    Image(systemName: "trash").foregroundColor(.red)
+                    Image(systemName: "trash").foregroundColor(.red).onTapGesture {
+                        AnswerQueryService().deleteAnswer(idAnswer: self.answer.idAnswer)
+                    }
                     Spacer()
                 }else{
                     Spacer()

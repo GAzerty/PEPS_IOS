@@ -13,13 +13,20 @@ struct CreateAnswerView: View {
     @Binding var isPresented : Bool
     @State private var showingAlert = false
     @State var answer : String = ""
-    var remark : Remark!
+    var remark : Remark?
     @State var selectedidCategory: Int = 0
     var categorySet : CategorySet = CategorySet(type: "answer")
+    var isUpdateView : Bool = false
+    var answerUpdated : Answer?
     
     var body: some View {
         VStack{
-            Text("Create a Answser").padding(10).font(.largeTitle)
+            
+            if(!self.isUpdateView){
+                Text("Create a Answser").padding(10).font(.largeTitle)
+            }else{
+                Text("Update a Answser").padding(10).font(.largeTitle)
+            }
             TextField("Answser...", text: self.$answer).padding().background(Color.gray).cornerRadius(20)
             Picker(selection: $selectedidCategory, label: Text("Category")){
                 ForEach(0 ..< categorySet.categorySet.count) {
@@ -29,23 +36,37 @@ struct CreateAnswerView: View {
             
             Button(action:{
                 if self.answer != ""{
+                    
+                    
                     let idCategory = self.categorySet.categorySet[self.selectedidCategory].idCategory
-                    if let idAnswerCreated = AnswerQueryService().createAnswser(answser: self.answer, idCategory: idCategory){
-                        if RemarkQueryService().linkAnswserToRemark(idRemark: self.remark.idRemark, idAnswer: idAnswerCreated){
-                            guard let categAnswer = CategoryQueryService().getCategoryById(idCategory: idCategory) else{
-                             return
+                    
+                    if(!self.isUpdateView){
+                        if let idAnswerCreated = AnswerQueryService().createAnswser(answser: self.answer, idCategory: idCategory){
+                            if let remark = self.remark{
+                                if RemarkQueryService().linkAnswserToRemark(idRemark: remark.idRemark, idAnswer: idAnswerCreated){
+                                    
+                                    guard let user = UserQueryService().getUserLogged() else{
+                                     return
+                                    }
+                                    guard let nbLike = AnswerQueryService().getNbLikeAnswer(idAnswer: idAnswerCreated) else{
+                                     return
+                                    }
+                                    let newAnswer = Answer(idAnswer: idAnswerCreated, answer: self.answer, category: idCategory, user: user,nbLike: nbLike)
+                                    remark.answerSet.addAnswers(answer: newAnswer)
+                                    self.isPresented.toggle()
+                                }
                             }
-                            guard let user = UserQueryService().getUserLogged() else{
-                             return
+                            
+                        }
+                    }else{
+                        
+                        if let answerUpdated = self.answerUpdated{
+                            if AnswerQueryService().updateAnswer(answer: answerUpdated, answerContent: self.answer, idCategory: idCategory){
+                                self.isPresented.toggle()
                             }
-                            guard let nbLike = AnswerQueryService().getNbLikeAnswer(idAnswer: idAnswerCreated) else{
-                             return
-                            }
-                            let newAnswer = Answer(idAnswer: idAnswerCreated, answer: self.answer, category: categAnswer, user: user,nbLike: nbLike)
-                            self.remark.answerSet.addAnswers(answer: newAnswer)
-                            self.isPresented.toggle()
                         }
                     }
+                    
                 }else{
                     self.showingAlert = true
                 }

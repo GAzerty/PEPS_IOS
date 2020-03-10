@@ -130,14 +130,14 @@ class AnswerQueryService {
     
     
     
-    func updateAnswer(idAnswer: Int, answer: String, idCategory: Int) -> Bool{
+    func updateAnswer(answer: Answer, answerContent: String, idCategory: Int) -> Bool{
         var requestDone : Bool = false
         var responseDataOpt : [String: Any]?
         
         var jsonData : Data?
         do {
             if let token = UserQueryService().getToken(){
-                let updateAnswer = createAnswserJSON(answer: answer, idCategory: idCategory, token: token)
+                let updateAnswer = createAnswserJSON(answer: answerContent, idCategory: idCategory, token: token)
                 jsonData = try JSONEncoder().encode(updateAnswer)
             }
             
@@ -145,12 +145,14 @@ class AnswerQueryService {
             print(error)
         }
         
-        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(idAnswer), httpMethod: "PUT", httpBody: jsonData)
+        responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/answers/"+String(answer.idAnswer), httpMethod: "PUT", httpBody: jsonData)
         
         if let responseData = responseDataOpt{
             let message = responseData["message"] as! String
             if message == "Success"{
                 requestDone = true
+                answer.answer = answerContent
+                answer.category = idCategory
             }
         }
         
