@@ -39,7 +39,7 @@ struct ResearchBarView: View {
              .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
              .foregroundColor(.secondary)
              .background(Color(.secondarySystemBackground))
-             .cornerRadius(10.0)
+             .cornerRadius(10.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 OrderByView(remarkSetSelected : self.remarkSetSelected)
             }
 

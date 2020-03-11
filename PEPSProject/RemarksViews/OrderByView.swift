@@ -37,7 +37,7 @@ struct OrderByView: View {
             }
            
         }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-            .background(Color(.secondarySystemBackground)).cornerRadius(10).animation(.spring())
+            .background(Color(.secondarySystemBackground)).cornerRadius(10).animation(.spring()).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }
 }
 
