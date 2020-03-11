@@ -20,9 +20,9 @@ struct AnswerRowView: View {
                 Image(systemName: "person")
                 Text("\(answer.user.pseudo ?? "pseudo")")
             }.padding(10)
-           
+            Divider()
             Text("\(answer.answer)").padding(10)
-            
+            Divider()
             HStack{
                 if(isUserAnswers){
                     Spacer()
@@ -41,7 +41,13 @@ struct AnswerRowView: View {
                 }
                 HStack{
                     Text("\(answer.nbLike)")
-                    Image(systemName: "volume")
+                    if(answer.nbLike == 0){
+                        Image(systemName: "volume.fill").padding(5)
+                    }else if(answer.nbLike < 2){
+                        Image(systemName: "volume.2.fill").padding(5)
+                    }else{
+                        Image(systemName: "volume.3.fill").padding(5)
+                    }
                 }.onTapGesture {
                     if(UserQueryService().isLogged()){
                         if !AnswerQueryService().addLikeAnswer(answer: self.answer){
@@ -52,7 +58,7 @@ struct AnswerRowView: View {
                 }.padding(10)
 
             }
-        }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(30).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
+        }.background(Color(.white)).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }
 }
 

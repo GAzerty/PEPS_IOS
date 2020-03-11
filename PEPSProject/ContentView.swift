@@ -27,24 +27,24 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80.0, height: 80.0)
-                            .onTapGesture {
-                            withAnimation {
-                                self.showMenu = true
-                            }
-                        }
+                            
                         Spacer()
-                        Button(action:{self.isShown.toggle()}){
+                        Button(action:{
+                            if(!UserQueryService().isLogged()){
+                                self.isShown.toggle()
+                            }else{
+                                withAnimation {
+                                    self.showMenu = true
+                                }
+                            }
+                        }){
                             VStack{
                                 Image(systemName: "person")
                             }
                         }.sheet(isPresented: self.$isShown){
                             
-                            if(UserQueryService().isLogged()){
-                                
-                                ReadUserView(user: UserQueryService().getUserLogged())
-                            }else{
-                                CreateUserView(isPresented: self.$isShown)
-                            }
+                            CreateUserView(isPresented: self.$isShown)
+                            
                         }.padding()
                             .foregroundColor(.black)
                             .background(Color.white)
@@ -59,7 +59,6 @@ struct ContentView: View {
                 }.frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: self.showMenu ? geometry.size.width/2 : 0)
                     .disabled(self.showMenu ? true : false)
-                    .background(self.showMenu ? Color(.secondarySystemBackground) : Color.white)
                 
                 if self.showMenu {
                     SideMenuView()

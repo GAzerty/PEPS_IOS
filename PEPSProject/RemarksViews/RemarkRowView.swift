@@ -40,8 +40,8 @@ struct RemarkRowView: View {
             HStack{
                 
                 HStack{
-                    Text("\(remark.answerSet.answerSet.count)")
-                    Image(systemName: "message").foregroundColor(.blue)
+                    Text("\(remark.answerSet.answerSet.count)").padding(5)
+                    Image(systemName: "message").foregroundColor(.blue).padding(5)
                 }.onTapGesture {
                     self.isShown.toggle()
                 }.sheet(isPresented: self.$isShown){
@@ -49,7 +49,7 @@ struct RemarkRowView: View {
                 }
                 if(self.isUserRemarks){
                     Spacer()
-                    Image(systemName: "square.and.pencil").foregroundColor(.green).onTapGesture {
+                    Image(systemName: "square.and.pencil").onTapGesture {
                         self.isShown2.toggle()
                     }.sheet(isPresented: self.$isShown2){
                         CreateRemarkView(isPresented: self.$isShown2, remark: self.remark.remark, location: self.remark.location, isUpdateView: true, remarkUpdated: self.remark)
@@ -65,8 +65,16 @@ struct RemarkRowView: View {
                     Spacer()
                 }
                 HStack{
-                    Text("\(remark.nbEncounter)")
-                    Image(systemName: "volume")
+                    Text("\(remark.nbEncounter)").padding(5)
+                    if(remark.nbEncounter == 0){
+                        Image(systemName: "volume.fill").padding(5)
+                    }else if(remark.nbEncounter < 2){
+                        Image(systemName: "volume.2.fill").padding(5)
+                    }else{
+                        Image(systemName: "volume.3.fill").padding(5)
+                    }
+                        
+                    
                 }.onTapGesture {
                     if(UserQueryService().isLogged()){
                         if !RemarkQueryService().addEncounter(remark: self.remark){
@@ -77,7 +85,7 @@ struct RemarkRowView: View {
                 }
             }.padding(10.0)
             
-        }.background(Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0))).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
+        }.background(Color(.white)).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }
     
 }

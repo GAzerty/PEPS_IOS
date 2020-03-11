@@ -18,6 +18,8 @@ struct ListRemarksView: View {
     var body: some View {
         
         ZStack(alignment: .bottomTrailing){
+            
+            
             VStack{
                 ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark)
                 List(self.remarkSetSelected.remarkSet) {
@@ -33,7 +35,7 @@ struct ListRemarksView: View {
                     Button(action:{self.isShown.toggle()}){
                         ZStack {
                             Circle()
-                                .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
+                                .foregroundColor(Color(.white))
                                 .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
                             
                             Image(systemName: "plus")

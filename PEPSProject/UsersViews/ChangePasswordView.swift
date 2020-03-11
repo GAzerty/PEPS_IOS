@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ChangePasswordView: View {
     
+    @Binding var isPresented : Bool
     @State var password1 : String = ""
     @State var password2 : String = ""
     
@@ -27,6 +28,7 @@ struct ChangePasswordView: View {
                 if(self.password1 != ""){
                     if(self.password1 == self.password2){
                         print("request change password todo")
+                        self.isPresented.toggle()
                     }else{
                         print("error: password not matching")
                     }
@@ -37,14 +39,15 @@ struct ChangePasswordView: View {
                 
             }){
                 Text("Change")
+                
             }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
             
         }.padding(20)
     }
 }
 
-struct ChangePasswordView_Previews: PreviewProvider {
+/*struct ChangePasswordView_Previews: PreviewProvider {
     static var previews: some View {
         ChangePasswordView()
     }
-}
+}*/

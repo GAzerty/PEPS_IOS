@@ -12,27 +12,22 @@ struct ReadUserView: View {
     
     var user: User!
     @State var isShown: Bool = false
-    
     var body: some View {
         
         VStack{
             
-            Text("Infos Personnelles:").padding()
-            Text("Pseudo: "+self.user.pseudo!)
+            Text("Personal Data").padding(10).background(Color(.white)).cornerRadius(10)
+            Text(self.user.pseudo!).padding(10).foregroundColor(.white).font(.headline)
             
             Button(action: {self.isShown.toggle()}) {
-                Text("Mes Posts:").padding()
+                Text("Password").padding(10).background(Color(.white)).cornerRadius(10)
             }.sheet(isPresented: self.$isShown){
-                ListUserRemarksView()
-            }
+                ChangePasswordView(isPresented: self.$isShown)
+            }.padding(10)
             
             Button(action: {}) {
-            Text("Password")
-                }.padding()
-            
-            Button(action: {}) {
-            Text("Delete Account")
-            }.padding().foregroundColor(.red)
+            Text("Delete Account").padding(10).background(Color(.white)).cornerRadius(10)
+            }.padding(10).foregroundColor(.red)
             
         }
     }
