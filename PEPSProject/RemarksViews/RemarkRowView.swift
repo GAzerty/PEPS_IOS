@@ -20,28 +20,32 @@ struct RemarkRowView: View {
             HStack{
                 VStack(alignment: .leading){
                     HStack{
-                        Image(systemName: "person")
-                        Text("\(remark.user.pseudo ?? "pseudo")")
+                        Image(systemName: "person").font(.system(size: 19))
+                        Text("\(remark.user.pseudo ?? "pseudo")").bold().font(Font.system(size: 20))
                         Spacer()
-                        Text("\(remark.getDateFormat(format: "fr_FR"))")
+                        Text("\(remark.getDateFormat(format: "fr_FR"))").font(Font.system(size: 13.5)).foregroundColor(.secondary)
                     }
                     HStack{
-                        Image(systemName: "mappin")
-                        Text("\(self.remark.location)")
+                        Image(systemName: "mappin").foregroundColor(Color(.darkGray)).font(.system(size: 15))
+                    Text("\(self.remark.location)").font(Font.system(size: 13.5)).foregroundColor(Color(.darkGray))
                     }
                 }
             }.padding(10)
             Divider()
-            HStack{
-                Text("\(remark.remark)")
-            }.padding(10)
+            HStack(){
+              
+            Text("\" \(remark.remark) \"")
+                .font(Font.system(size: 20))
+                
+                Spacer()
+            }.padding(5)
             Divider()
             
             HStack{
                 
                 HStack{
-                    Text("\(remark.answerSet.answerSet.count)").padding(5)
-                    Image(systemName: "message").foregroundColor(.blue).padding(5)
+                    Text("\(remark.answerSet.answerSet.count)")
+                    Image(systemName: "message").foregroundColor(.blue)
                 }.onTapGesture {
                     self.isShown.toggle()
                 }.sheet(isPresented: self.$isShown){
@@ -83,16 +87,17 @@ struct RemarkRowView: View {
                         }
                     }
                 }
-            }.padding(10.0)
+            }.padding(10)
             
-        }.background(Color(.white)).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
+        }.background(Color(.white)).cornerRadius(15).padding(5).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }
     
 }
 
-
-/*struct RemarkRowView_Previews: PreviewProvider {
+/*
+struct RemarkRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RemarkRowView(remark: <#Remark#>)
+        RemarkRowView(remark: Remark())
     }
-}*/
+}
+*/
