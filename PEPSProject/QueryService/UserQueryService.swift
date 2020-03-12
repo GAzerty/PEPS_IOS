@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import JWTDecode
 
 struct createUserJSON: Codable{
     var pseudo: String
@@ -134,8 +134,10 @@ class UserQueryService{
             
             if let url = self.fileLocation{
                 do{
-                    
-                    guard let user : User = getUserById(idUser: 45) else{
+                    let jwt = try decode(jwt: token)
+                    let jwtBody = jwt.body
+                    let jwtIdUser = jwtBody["idUser"] as! Int
+                    guard let user : User = getUserById(idUser: jwtIdUser) else{
                         return
                     }
                     let credentialJson = credentialsJSON(user: user, token: token)

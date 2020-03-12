@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86025286241AAE37002155AC /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 86025285241AAE37002155AC /* JWTDecode */; };
 		860D7E9D240A7B9200A9580E /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860D7E9C240A7B9200A9580E /* QueryService.swift */; };
 		86153E932412F0CE002A92BD /* UserRemarksRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86153E922412F0CE002A92BD /* UserRemarksRowView.swift */; };
 		86153E952412FE9E002A92BD /* ListUserRemarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86153E942412FE9E002A92BD /* ListUserRemarksView.swift */; };
@@ -116,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86025286241AAE37002155AC /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +316,9 @@
 			dependencies = (
 			);
 			name = PEPSProject;
+			packageProductDependencies = (
+				86025285241AAE37002155AC /* JWTDecode */,
+			);
 			productName = PEPSProject;
 			productReference = 86FCED8324055CA800E46817 /* PEPSProject.app */;
 			productType = "com.apple.product-type.application";
@@ -386,6 +391,9 @@
 				Base,
 			);
 			mainGroup = 86FCED7A24055CA800E46817;
+			packageReferences = (
+				86025284241AAE37002155AC /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+			);
 			productRefGroup = 86FCED8424055CA800E46817 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -780,6 +788,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86025284241AAE37002155AC /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86025285241AAE37002155AC /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86025284241AAE37002155AC /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		86FCED8A24055CA800E46817 /* PEPSProject.xcdatamodeld */ = {
