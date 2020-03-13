@@ -15,7 +15,7 @@ struct createUserJSON: Codable{
 }
 
 struct credentialsJSON: Codable{
-    var user: User
+    var user: User?
     var token: String
 }
 
@@ -123,9 +123,21 @@ class UserQueryService{
     
     
     //Clear the token stored in the JSON file
-    /*func logout(){
-        
-    }*/
+    func logout(){
+        if let url = self.fileLocation{
+            do{
+                let resetToken = ""
+                let credentialJson = credentialsJSON(user: nil, token: resetToken)
+                
+                let jsonEncoder = JSONEncoder()
+                jsonEncoder.outputFormatting = .prettyPrinted
+                let data = try jsonEncoder.encode(credentialJson)
+                try data.write(to: url)
+            }catch{
+                print(error)
+            }
+        }
+    }
     
     //Store the token given by the API in a JSON file
     func storeUser(token: String){
@@ -156,7 +168,6 @@ class UserQueryService{
     
     //Return True if a token is stored in the JSON file
     func isLogged() -> Bool{
-        print(getToken() != nil)
         return (getToken() != nil)
     }
     
@@ -171,7 +182,11 @@ class UserQueryService{
                 let data = try Data(contentsOf: url)
                 let jsonDecoder = JSONDecoder()
                 let dataFromJson = try jsonDecoder.decode(credentialsJSON.self, from: data)
-                token = dataFromJson.token
+                if(dataFromJson.token != ""){
+                    token = dataFromJson.token
+                }else{
+                    token = nil
+                }
             }catch{
                 print(error)
             }

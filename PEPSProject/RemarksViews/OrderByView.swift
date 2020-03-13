@@ -15,7 +15,7 @@ struct OrderByView: View {
     var body : some View {
         VStack(spacing: 10){
             HStack{
-                Text("Order by").fontWeight(.heavy)
+                Text("Order by").fontWeight(.heavy).foregroundColor(Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)))
                 Image(systemName: expand ? "chevron.up":"chevron.down").resizable().frame(width:13, height: 6)
             }.onTapGesture {
                 self.expand.toggle()

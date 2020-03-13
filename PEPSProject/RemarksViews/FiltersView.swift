@@ -40,7 +40,7 @@ struct FiltersView: View {
                         
                     }){
                         Text("My Posts")
-                }.padding(5).foregroundColor(.secondary).background(self.personalRemark ? Color.gray : Color(.secondarySystemBackground)).cornerRadius(50).shadow(color: .gray, radius: 3, x: 1, y: 1)
+                    }.padding(5).foregroundColor(self.personalRemark ? Color.white : Color.secondary).background(self.personalRemark ? Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)) : Color(.secondarySystemBackground)).cornerRadius(50).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 }
                 
                 
@@ -61,7 +61,7 @@ struct FiltersView: View {
                         print(self.categoriesSelected)
                         self.remarkSetSelected.remarkSet = self.remarkSetBase.filterBy(idCategories: self.categoriesSelected)
                              }) {
-                                Text("\(self.categorySet.categorySet[i].lib)").padding(5).foregroundColor(.secondary).background(self.arePressed.contains(i) ? Color.gray : Color(.secondarySystemBackground)).cornerRadius(50)
+                                Text("\(self.categorySet.categorySet[i].lib)").padding(5).foregroundColor(self.arePressed.contains(i) ? Color.white : Color.secondary).background(self.arePressed.contains(i) ? Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)) : Color(.secondarySystemBackground)).cornerRadius(50)
                        }.padding(5).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 }
             }

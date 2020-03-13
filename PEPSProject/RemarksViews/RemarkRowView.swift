@@ -20,10 +20,10 @@ struct RemarkRowView: View {
             HStack{
                 VStack(alignment: .leading){
                     HStack{
-                        Image(systemName: "person").font(.system(size: 19))
-                        Text("\(remark.user.pseudo ?? "pseudo")").bold().font(Font.system(size: 20))
+                        Image(systemName: "person.circle").font(.system(size: 19))
+                        Text("\(remark.user.pseudo ?? "pseudo")").bold().font(Font.system(size: 20)).foregroundColor(Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)))
                         Spacer()
-                        Text("\(remark.getDateFormat(format: "fr_FR"))").font(Font.system(size: 13.5)).foregroundColor(.secondary)
+                        Text("\(remark.getDateFormat(format: "fr_FR"))").font(Font.system(size: 13.5)).foregroundColor(Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)))
                     }
                     HStack{
                         Image(systemName: "mappin").foregroundColor(Color(.darkGray)).font(.system(size: 15))
@@ -31,7 +31,7 @@ struct RemarkRowView: View {
                     }
                 }
             }.padding(10)
-            Divider()
+            
             HStack(){
               
             Text("\" \(remark.remark) \"")
@@ -39,13 +39,12 @@ struct RemarkRowView: View {
                 
                 Spacer()
             }.padding(5)
-            Divider()
             
             HStack{
                 
                 HStack{
                     Text("\(remark.answerSet.answerSet.count)")
-                    Image(systemName: "message").foregroundColor(.blue)
+                    Image(systemName: "message").foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                 }.onTapGesture {
                     self.isShown.toggle()
                 }.sheet(isPresented: self.$isShown){
@@ -71,11 +70,11 @@ struct RemarkRowView: View {
                 HStack{
                     Text("\(remark.nbEncounter)").padding(5)
                     if(remark.nbEncounter == 0){
-                        Image(systemName: "volume.fill").padding(5)
+                        Image(systemName: "volume.fill").padding(5).foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                     }else if(remark.nbEncounter < 2){
-                        Image(systemName: "volume.2.fill").padding(5)
+                        Image(systemName: "volume.2.fill").padding(5).foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                     }else{
-                        Image(systemName: "volume.3.fill").padding(5)
+                        Image(systemName: "volume.3.fill").padding(5).foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                     }
                         
                     
@@ -89,7 +88,7 @@ struct RemarkRowView: View {
                 }
             }.padding(10)
             
-        }.background(Color(.white)).cornerRadius(15).padding(5).shadow(color: .gray, radius: 3, x: 1, y: 1)
+        }.background(Color(.white))//.cornerRadius(15).padding(5).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }
     
 }
