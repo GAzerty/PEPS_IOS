@@ -11,6 +11,7 @@ import SwiftUI
 struct AnswerRowView: View {
     
     @State var isShown: Bool = false
+    @ObservedObject var answerSet: AnswerSet
     @ObservedObject var answer: Answer
     var isUserAnswers : Bool!
     
@@ -33,7 +34,9 @@ struct AnswerRowView: View {
                     }
                     Spacer()
                     Image(systemName: "trash").foregroundColor(.red).onTapGesture {
-                        AnswerQueryService().deleteAnswer(idAnswer: self.answer.idAnswer)
+                        if AnswerQueryService().deleteAnswer(idAnswer: self.answer.idAnswer){
+                            self.answerSet.remove(answer: self.answer)
+                        }
                     }
                     Spacer()
                 }else{

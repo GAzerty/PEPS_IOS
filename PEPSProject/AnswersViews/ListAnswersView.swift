@@ -19,9 +19,9 @@ struct ListAnswersView: View {
                 VStack{
                     
                     if(UserQueryService().getUserLogged()?.idUser == answer.user.idUser){
-                        AnswerRowView(answer: answer,isUserAnswers: true)
+                        AnswerRowView(answerSet: self.answerSet,answer: answer,isUserAnswers: true)
                     }else{
-                        AnswerRowView(answer: answer,isUserAnswers: false)
+                        AnswerRowView(answerSet: self.answerSet,answer: answer,isUserAnswers: false)
                     }
                     
                 }

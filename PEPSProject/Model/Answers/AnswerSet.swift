@@ -23,4 +23,8 @@ class AnswerSet: ObservableObject {
             self.answerSet.append(answer)
         }
     }
+    
+    func remove(answer: Answer){
+        self.answerSet.removeAll{ $0.idAnswer == answer.idAnswer}
+    }
 }

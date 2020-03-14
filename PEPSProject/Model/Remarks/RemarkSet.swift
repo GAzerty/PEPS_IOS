@@ -56,6 +56,10 @@ class RemarkSet: ObservableObject {
     }
     
     func reset(){
-        self.remarkSet = [Remark]()
+        self.remarkSet.removeAll()
+    }
+    
+    func remove(remark: Remark){
+        self.remarkSet.removeAll{ $0.idRemark == remark.idRemark}
     }
 }
