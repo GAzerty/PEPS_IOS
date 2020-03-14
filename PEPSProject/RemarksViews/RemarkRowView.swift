@@ -10,6 +10,7 @@ import SwiftUI
 
 struct RemarkRowView: View {
     
+    @ObservedObject var remarkSet: RemarkSet
     @ObservedObject var remark: Remark
     @State var isShown: Bool = false
     @State var isShown2: Bool = false
@@ -60,7 +61,7 @@ struct RemarkRowView: View {
                     Spacer()
                     Image(systemName: "trash").foregroundColor(.red).onTapGesture {
                         if RemarkQueryService().deleteRemark(idRemark: self.remark.idRemark){
-                            print("deleted remark")
+                            self.remarkSet.remove(remark: self.remark)
                         }
                     }
                     Spacer()

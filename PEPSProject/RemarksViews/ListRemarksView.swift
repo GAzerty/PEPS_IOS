@@ -24,7 +24,7 @@ struct ListRemarksView: View {
                 ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark)
                 List(self.remarkSetSelected.remarkSet) {
                     remark in VStack{
-                        RemarkRowView(remark: remark, isUserRemarks: self.personalRemark)
+                        RemarkRowView(remarkSet: self.remarkSetSelected,remark: remark, isUserRemarks: self.personalRemark)
                     }
                 }
                 
