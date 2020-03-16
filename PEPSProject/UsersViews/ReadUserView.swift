@@ -18,7 +18,7 @@ struct ReadUserView: View {
         
         VStack{
             if(self.connectedPanel){
-                Text(self.user.pseudo!).padding(10).foregroundColor(.white).font(.headline)
+                Text(self.user.pseudo!).padding(10).foregroundColor(.white).font(.title)
                 
                 Button(action: {self.isShown.toggle()}) {
                     Text("Password").padding(10).background(Color(.white)).cornerRadius(10)

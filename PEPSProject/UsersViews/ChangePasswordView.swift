@@ -17,7 +17,8 @@ struct ChangePasswordView: View {
     var body: some View {
         VStack(){
             
-            Text("Change Password").font(.title)
+            Text("Change Password").font(.title).foregroundColor(.purple)
+            .cornerRadius(10.0).padding()
             
             SecureField("New password ...", text: self.$password1).padding().background(Color.white).cornerRadius(20.0).shadow(color: .gray, radius: 3, x: 1, y: 1)
             
@@ -40,7 +41,9 @@ struct ChangePasswordView: View {
             }){
                 Text("Change")
                 
-            }.padding().background(Color.green).foregroundColor(.white).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
+            }.font(.title).padding(10).foregroundColor(.purple).background(Color.white)
+            .cornerRadius(20)
+            .shadow(color: .gray, radius: 3)
             
         }.padding(20)
     }
