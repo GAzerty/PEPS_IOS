@@ -23,16 +23,17 @@ struct CreateAnswerView: View {
         VStack{
             
             if(!self.isUpdateView){
-                Text("Create a Answser").padding(10).font(.largeTitle)
+                Text("Create an Answser").font(.title).foregroundColor(.purple).cornerRadius(10.0).padding()
             }else{
-                Text("Update a Answser").padding(10).font(.largeTitle)
+                Text("Update a Answser").font(.title).foregroundColor(.purple).cornerRadius(10.0).padding()
             }
-            TextField("Answser...", text: self.$answer).padding().background(Color.gray).cornerRadius(20)
+            TextField("Answser...", text: self.$answer).padding().background(Color(.secondarySystemBackground)).cornerRadius(10)
             Picker(selection: $selectedidCategory, label: Text("Category")){
                 ForEach(0 ..< categorySet.categorySet.count) {
-                    Text("\(self.categorySet.categorySet[$0].lib)")
+                    Text("\(self.categorySet.categorySet[$0].lib)").padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground)).cornerRadius(10)
                 }
-            }
+            }.padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground))
+            .cornerRadius(10)
             
             Button(action:{
                 if self.answer != ""{
@@ -72,12 +73,14 @@ struct CreateAnswerView: View {
                 }
             })
             {
-                Text("Send")
+                Text("Send").font(.title).padding(10).foregroundColor(.purple).background(Color.white)
+                .cornerRadius(20)
+                .shadow(color: .gray, radius: 3)
             }.alert(isPresented: $showingAlert) {
                 Alert(title: Text("Empty Field"), message: Text("Please fill the fields"), dismissButton: .default(Text("Got it !")))
             }
             
-        }
+        }.padding(10)
         
     }
 }
