@@ -18,12 +18,11 @@ struct AnswerRowView: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack{
-                Image(systemName: "person")
-                Text("\(answer.user.pseudo ?? "pseudo")")
+            HStack{
+                Image(systemName: "person.circle").font(.system(size: 19))
+                Text("\(answer.user.pseudo ?? "pseudo")").bold().font(Font.system(size: 20)).foregroundColor(Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)))
             }.padding(10)
-            Divider()
-            Text("\(answer.answer)").padding(10)
-            Divider()
+            
             HStack{
                 if(isUserAnswers){
                     Spacer()
@@ -45,11 +44,11 @@ struct AnswerRowView: View {
                 HStack{
                     Text("\(answer.nbLike)")
                     if(answer.nbLike == 0){
-                        Image(systemName: "volume.fill").padding(5)
+                        Image(systemName: "volume.fill").padding(5).foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                     }else if(answer.nbLike < 2){
-                        Image(systemName: "volume.2.fill").padding(5)
+                        Image(systemName: "volume.2.fill").padding(5).foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                     }else{
-                        Image(systemName: "volume.3.fill").padding(5)
+                        Image(systemName: "volume.3.fill").padding(5).foregroundColor(Color(UIColor(red: 209/255, green: 111/255, blue: 172/255, alpha: 1.0)))
                     }
                 }.onTapGesture {
                     if(UserQueryService().isLogged()){
@@ -61,6 +60,11 @@ struct AnswerRowView: View {
                 }.padding(10)
 
             }
+        }
+            Divider()
+            Text("\" \(answer.answer) \"").font(Font.system(size: 20)).padding(10)
+            //Divider()
+            
         }.background(Color(.white)).cornerRadius(15).padding(10).shadow(color: .gray, radius: 3, x: 1, y: 1)
     }
 }

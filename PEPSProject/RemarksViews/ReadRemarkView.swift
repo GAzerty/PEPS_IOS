@@ -19,10 +19,10 @@ struct ReadRemarkView: View {
         ZStack(alignment: .bottomTrailing){
             
             VStack{
-                HStack{
-                    Text("Answsers").font(.largeTitle)
+               
+            Text("Answsers").font(.largeTitle).foregroundColor(.purple).padding(10)
                     Spacer()
-                }.padding(10)
+               
                 ListAnswersView(answerSet: self.remark.answerSet)
             }
             VStack {
@@ -34,7 +34,7 @@ struct ReadRemarkView: View {
                                 .foregroundColor(Color(red: 255/255, green: 255/255, blue: 255/255))
                                 .frame(width: 55, height: 55).shadow(color: .gray, radius: 3, x: 1, y: 1)
                             
-                            Image(systemName: "plus")
+                            Image(systemName: "pencil")
                                 .imageScale(.large)
                                 .foregroundColor(.purple)
                         }.padding()
