@@ -16,6 +16,13 @@ struct createRemarkJSON: Codable{
     var location: String
 }
 
+
+struct updateRemarkJSON: Codable{
+    var remark: String
+    var idCategory: Int
+    var token: String
+}
+
 struct tokenJSON: Codable{
     var token: String
 }
@@ -290,14 +297,14 @@ class RemarkQueryService {
         return requestDone
     }
     
-    func updateRemark(remark: Remark, remarkContent: String, idCategory: Int, location: String) -> Bool{
+    func updateRemark(remark: Remark, remarkContent: String, idCategory: Int) -> Bool{
         var requestDone : Bool = false
         var responseDataOpt : [String: Any]?
         
         var jsonData : Data?
         do {
             if let token = UserQueryService().getToken(){
-                let updateRemark = createRemarkJSON(remark: remarkContent, idCategory: idCategory, token: token, location: location)
+                let updateRemark = updateRemarkJSON(remark: remarkContent, idCategory: idCategory, token: token)
                 jsonData = try JSONEncoder().encode(updateRemark)
             }
         } catch {
@@ -312,7 +319,6 @@ class RemarkQueryService {
                 requestDone = true
                 remark.remark = remarkContent
                 remark.category = idCategory
-                remark.location = location
             }
         }
         

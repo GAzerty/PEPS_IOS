@@ -19,6 +19,7 @@ struct CreateRemarkView: View {
     var isUpdateView : Bool = false
     var remarkUpdated : Remark?
     @ObservedObject var remarkSet : RemarkSet = RemarkSet()
+    @State var errorMessage : String = ""
     
     var body: some View {
         VStack{
@@ -39,7 +40,10 @@ struct CreateRemarkView: View {
             }.padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground))
             .cornerRadius(10)
             
-            TextField("Location...", text: $location).padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground)).cornerRadius(10)
+            if(!isUpdateView){
+                TextField("Location...", text: $location).padding().foregroundColor(.secondary)  .background(Color(.secondarySystemBackground)).cornerRadius(10)
+            }
+            
             
             Button(action:{
                 if self.remark != "" && self.location != ""{
@@ -52,17 +56,24 @@ struct CreateRemarkView: View {
                             let newRemark = Remark(idRemark: idRemarkCreated, remark: self.remark, idCategory: self.selectedidCategory, user: user, location: self.location)
                             self.remarkSet.addRemarks(remark: newRemark)
                             self.isPresented.toggle()
+                        }else{
+                            self.errorMessage = "Create failed, please try again."
+                            self.showingAlert = true
                         }
                     }else{
                         if let remarkUpdated = self.remarkUpdated{
-                            if RemarkQueryService().updateRemark(remark: remarkUpdated, remarkContent: self.remark, idCategory: idCategory, location: self.location){
+                            if RemarkQueryService().updateRemark(remark: remarkUpdated, remarkContent: self.remark, idCategory: idCategory){
                                 self.isPresented.toggle()
+                            }else{
+                                self.errorMessage = "Update failed, please try again."
+                                self.showingAlert = true
                             }
                         }
                         
                     }
                     
                 }else{
+                    self.errorMessage = "Please fill the fields"
                     self.showingAlert = true
                 }
             })
@@ -71,7 +82,7 @@ struct CreateRemarkView: View {
                     .cornerRadius(20)
                     .shadow(color: .gray, radius: 3)
             }.alert(isPresented: $showingAlert) {
-                Alert(title: Text("Empty Field"), message: Text("Please fill the fields"), dismissButton: .default(Text("Got it !")))
+                Alert(title: Text("A problem occured"), message: Text("\(self.errorMessage)"), dismissButton: .default(Text("Got it !")))
             }
             
         }.padding(10)

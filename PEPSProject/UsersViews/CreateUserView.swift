@@ -14,6 +14,7 @@ struct CreateUserView: View {
     @State private var showingAlert = false
     @State private var pseudo: String = ""
     @State private var password: String = ""
+    @State var errorMessage : String = ""
     
     var body: some View {
         
@@ -40,15 +41,19 @@ struct CreateUserView: View {
                             print("data checked")
                             if UserQueryService().createUser(pseudo: self.pseudo, password: self.password){
                                 self.isPresented.toggle()
+                            }else{
+                                self.errorMessage = "Error during creation. Change username and try again"
+                                self.showingAlert = true
                             }
                         }else{
+                            self.errorMessage = "Empty field !"
                             self.showingAlert = true
                         }
                         
                     }) {
                         Text("Create")
                     }.alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
+                        Alert(title: Text("A problem occured"), message: Text("\(self.errorMessage)"), dismissButton: .default(Text("Got it !")))
                 }.padding().background(Color.white).foregroundColor(.blue).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
                     
                     Button(action: {
@@ -58,14 +63,18 @@ struct CreateUserView: View {
                             print("data checked")
                             if UserQueryService().login(pseudo: self.pseudo, password: self.password){
                                 self.isPresented.toggle()
+                            }else{
+                                self.errorMessage = "Invalid Password or Username. Please try again"
+                                self.showingAlert = true
                             }
                         }else{
+                            self.errorMessage = "Empty field !"
                             self.showingAlert = true
                         }
                     }) {
                         Text("Login")
                     }.alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Erreur"), message: Text("Valeurs incorrectes"), dismissButton: .default(Text("Compris !")))
+                        Alert(title: Text("A problem occured"), message: Text("\(self.errorMessage)"), dismissButton: .default(Text("Got it !")))
                 }.padding().background(Color.white).foregroundColor(.green).cornerRadius(15).shadow(color: .gray, radius: 3, x: 1, y: 1)
                 }
                 
