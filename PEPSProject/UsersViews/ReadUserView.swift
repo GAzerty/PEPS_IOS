@@ -34,7 +34,12 @@ struct ReadUserView: View {
                 }.padding(10).foregroundColor(.orange)
                 
                 
-                Button(action: {}) {
+                Button(action: {
+                    if UserQueryService().deleteUser(){
+                        UserQueryService().logout()
+                        self.connectedPanel.toggle()
+                    }
+                }) {
                     Text("Delete Account").padding(10).background(Color(.white)).cornerRadius(10)
                 }.padding(10).foregroundColor(.red)
             }else{

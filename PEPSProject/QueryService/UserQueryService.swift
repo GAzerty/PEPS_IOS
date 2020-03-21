@@ -88,6 +88,40 @@ class UserQueryService{
         return requestDone
     }
     
+    //
+    // Send a request to API for delete a User in database
+    //
+    func deleteUser() -> Bool{
+        var requestDone : Bool = false
+        
+        var jsonData : Data?
+        do {
+            if let token = getToken(){
+                let token = tokenJSON(token: token)
+                jsonData = try JSONEncoder().encode(token)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        var responseDataOpt : [String: Any]?
+        if let user = getUserLogged(){
+            if let idUser = user.idUser{
+                responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/users/"+String(idUser), httpMethod: "DELETE", httpBody: jsonData)
+            }
+        }
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+            }
+        }
+        
+        return requestDone
+    }
+    
     
     
     //Log the User in the API
