@@ -40,7 +40,9 @@ struct CreateUserView: View {
                         if (self.password != "" && self.pseudo != ""){
                             print("data checked")
                             if UserQueryService().createUser(pseudo: self.pseudo, password: self.password){
-                                self.isPresented.toggle()
+                                if UserQueryService().login(pseudo: self.pseudo, password: self.password){
+                                    self.isPresented.toggle()
+                                }
                             }else{
                                 self.errorMessage = "Error during creation. Change username and try again"
                                 self.showingAlert = true
