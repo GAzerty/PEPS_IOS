@@ -14,14 +14,15 @@ struct ListRemarksView: View {
     @ObservedObject var remarkSetSelected : RemarkSet
     @State var isShown: Bool = false
     @State var personalRemark: Bool = false
-    
+    var isConnected : Bool!
+
     var body: some View {
         
         ZStack(alignment: .bottomTrailing){
             
             
             VStack{
-                ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark)
+                ResearchBarView(remarkSetBase: self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark, isConnected: self.isConnected)
                 List(self.remarkSetSelected.remarkSet) {
                     remark in VStack{
                         RemarkRowView(remarkSet: self.remarkSetSelected,remark: remark, isUserRemarks: self.personalRemark)

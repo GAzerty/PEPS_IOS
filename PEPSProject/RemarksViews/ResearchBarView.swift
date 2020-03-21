@@ -15,6 +15,7 @@ struct ResearchBarView: View {
     @ObservedObject var remarkSetSelected : RemarkSet
     @State private var showDetail = false
     @Binding var personalRemark: Bool
+    var isConnected : Bool!
     
     var body: some View {
         VStack{
@@ -43,7 +44,7 @@ struct ResearchBarView: View {
                 OrderByView(remarkSetSelected : self.remarkSetSelected)
             }
 
-            FiltersView(remarkSetBase : self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark)
+            FiltersView(remarkSetBase : self.remarkSetBase,remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark, isConnected: self.isConnected)
         }.padding(10)
     }
 }

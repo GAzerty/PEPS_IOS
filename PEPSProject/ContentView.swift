@@ -55,7 +55,13 @@ struct ContentView: View {
                     }.padding(10)
                     
                     VStack{
-                        ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected)
+                        if(UserQueryService().isLogged()){
+                            ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected, isConnected: true)
+                        }
+                        else{
+                            ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected, isConnected: false)
+                        }
+                        
                     }
                     
                 }.frame(width: geometry.size.width, height: geometry.size.height)

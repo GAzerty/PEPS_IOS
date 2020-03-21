@@ -152,7 +152,6 @@ class UserQueryService{
         }
         storeUser(token: userToken)
         return requestDone
-        
     }
     
     

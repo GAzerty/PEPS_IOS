@@ -51,23 +51,30 @@ struct RemarkRowView: View {
                 }.sheet(isPresented: self.$isShown){
                     ReadRemarkView(remark: self.remark,isPresentend: self.$isShown)
                 }
-                if(self.isUserRemarks){
-                    Spacer()
-                    Image(systemName: "square.and.pencil").onTapGesture {
-                        self.isShown2.toggle()
-                    }.sheet(isPresented: self.$isShown2){
-                        CreateRemarkView(isPresented: self.$isShown2, remark: self.remark.remark, location: self.remark.location, isUpdateView: true, remarkUpdated: self.remark)
-                    }
-                    Spacer()
-                    Image(systemName: "trash").foregroundColor(.red).onTapGesture {
-                        if RemarkQueryService().deleteRemark(idRemark: self.remark.idRemark){
-                            self.remarkSet.remove(remark: self.remark)
+                if (UserQueryService().isLogged()){
+                    if(self.isUserRemarks){
+                        Spacer()
+                        Image(systemName: "square.and.pencil").onTapGesture {
+                            self.isShown2.toggle()
+                        }.sheet(isPresented: self.$isShown2){
+                            CreateRemarkView(isPresented: self.$isShown2, remark: self.remark.remark, location: self.remark.location, isUpdateView: true, remarkUpdated: self.remark)
                         }
+                        Spacer()
+                        Image(systemName: "trash").foregroundColor(.red).onTapGesture {
+                            if RemarkQueryService().deleteRemark(idRemark: self.remark.idRemark){
+                                self.remarkSet.remove(remark: self.remark)
+                            }
+                        }
+                        Spacer()
+                    }else{
+                        Spacer()
                     }
-                    Spacer()
                 }else{
                     Spacer()
                 }
+                
+            
+                
                 HStack{
                     Text("\(remark.nbEncounter)").padding(5)
                     if(remark.nbEncounter == 0){

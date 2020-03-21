@@ -15,11 +15,13 @@ struct FiltersView: View {
     @ObservedObject var remarkSetSelected : RemarkSet
     @State var arePressed : [Int] = [Int]()
     @Binding var personalRemark: Bool
+    var isConnected : Bool!
+    
     var body: some View {
         
         ScrollView(.horizontal) {
             HStack{
-                if(UserQueryService().isLogged()){
+                if(self.isConnected){
                     Button(action:{
                         self.personalRemark.toggle()
                         if(self.personalRemark){
