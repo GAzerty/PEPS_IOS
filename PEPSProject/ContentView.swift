@@ -14,6 +14,7 @@ struct ContentView: View {
     @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet()
     @State var isShown: Bool = false
     @State var showMenu : Bool = false
+    @State var personalRemark: Bool = false
     
     var drag: some Gesture {
         DragGesture()
@@ -56,10 +57,10 @@ struct ContentView: View {
                     
                     VStack{
                         if(UserQueryService().isLogged()){
-                            ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected, isConnected: true)
+                            ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark, isConnected: true)
                         }
                         else{
-                            ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected, isConnected: false)
+                            ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected, personalRemark: self.$personalRemark, isConnected: false)
                         }
                         
                     }

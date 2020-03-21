@@ -54,8 +54,8 @@ struct ReadUserView: View {
     }
 }
 
-struct ReadUserView_Previews: PreviewProvider {
+/*struct ReadUserView_Previews: PreviewProvider {
     static var previews: some View {
         ReadUserView()
     }
-}
+}*/

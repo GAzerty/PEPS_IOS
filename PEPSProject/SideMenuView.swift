@@ -11,8 +11,6 @@ import SwiftUI
 struct SideMenuView: View {
     
     @State var isLogged : Bool = UserQueryService().isLogged()
-    
-    
     var body: some View {
         
         ZStack{
@@ -38,8 +36,8 @@ struct SideMenuView: View {
     }
 }
 
-struct SideMenuView_Previews: PreviewProvider {
+/*struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
         SideMenuView()
     }
-}
+}*/

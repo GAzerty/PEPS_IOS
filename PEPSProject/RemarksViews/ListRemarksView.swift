@@ -13,7 +13,7 @@ struct ListRemarksView: View {
     @ObservedObject var remarkSetBase : RemarkSet
     @ObservedObject var remarkSetSelected : RemarkSet
     @State var isShown: Bool = false
-    @State var personalRemark: Bool = false
+    @Binding var personalRemark: Bool
     var isConnected : Bool!
 
     var body: some View {
