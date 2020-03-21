@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var remarkSetBase : RemarkSet = RemarkSet()
+    @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet()
     @State var isShown: Bool = false
     @State var showMenu : Bool = false
     
@@ -53,7 +55,7 @@ struct ContentView: View {
                     }.padding(10)
                     
                     VStack{
-                        ListRemarksView()
+                        ListRemarksView(remarkSetBase: self.remarkSetBase, remarkSetSelected: self.remarkSetSelected)
                     }
                     
                 }.frame(width: geometry.size.width, height: geometry.size.height)

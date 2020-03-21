@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ListRemarksView: View {
     
-    @ObservedObject var remarkSetBase : RemarkSet = RemarkSet()
-    @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet()
+    @ObservedObject var remarkSetBase : RemarkSet
+    @ObservedObject var remarkSetSelected : RemarkSet
     @State var isShown: Bool = false
     @State var personalRemark: Bool = false
     
@@ -58,8 +58,8 @@ struct ListRemarksView: View {
     
 }
 
-struct ListRemarksView_Previews: PreviewProvider {
+/*struct ListRemarksView_Previews: PreviewProvider {
     static var previews: some View {
         ListRemarksView()
     }
-}
+}*/
