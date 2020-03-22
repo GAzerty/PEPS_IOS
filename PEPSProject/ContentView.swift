@@ -14,11 +14,23 @@ struct ContentView: View {
     @ObservedObject var remarkSetSelected : RemarkSet = RemarkSet()
     @State var isShown: Bool = false
     @State var showMenu : Bool = false
+    @State var haveBeenDisconnected : Bool = false
     @State var personalRemark: Bool = false
     
     var drag: some Gesture {
         DragGesture()
-            .onEnded { _ in self.showMenu = false }
+            .onEnded {
+                _ in self.showMenu = false
+                if(self.haveBeenDisconnected){
+                    self.personalRemark = false
+                    self.remarkSetBase.reset()
+                    self.remarkSetSelected.reset()
+                    self.remarkSetBase.addRemarks(remarkTab: RemarkQueryService().getAllRemarks())
+                    self.remarkSetSelected.addRemarks(remarkTab: RemarkQueryService().getAllRemarks())
+                    self.haveBeenDisconnected.toggle()
+                }
+                
+        }
     }
     
     var body: some View {
@@ -70,12 +82,12 @@ struct ContentView: View {
                     .disabled(self.showMenu ? true : false)
                 
                 if self.showMenu {
-                    SideMenuView()
+                    SideMenuView(haveBeenDisconnected: self.$haveBeenDisconnected)
                         .frame(width: geometry.size.width/2)
                         .transition(.move(edge: .leading))
                 }
             }
-        }.gesture(drag)
+        }.onAppear{print("appear content")}.onDisappear{print("dispear content")}.gesture(drag)
   
     }
     

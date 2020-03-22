@@ -11,6 +11,7 @@ import SwiftUI
 struct SideMenuView: View {
     
     @State var isLogged : Bool = UserQueryService().isLogged()
+    @Binding var haveBeenDisconnected : Bool
     var body: some View {
         
         ZStack{
@@ -20,7 +21,7 @@ struct SideMenuView: View {
             VStack(alignment: .leading){
                 VStack{
                     if(self.isLogged){
-                        ReadUserView(user: UserQueryService().getUserLogged())
+                        ReadUserView(user: UserQueryService().getUserLogged(), haveBeenDisconnected: self.$haveBeenDisconnected)
                         Spacer()
                     }else{
                         Text("Please Login !").foregroundColor(.white).font(.title)

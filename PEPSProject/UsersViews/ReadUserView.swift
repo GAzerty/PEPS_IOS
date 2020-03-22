@@ -13,6 +13,7 @@ struct ReadUserView: View {
     var user: User!
     @State var isShown: Bool = false
     @State var connectedPanel : Bool = true
+    @Binding var haveBeenDisconnected : Bool
     
     var body: some View {
         
@@ -28,6 +29,7 @@ struct ReadUserView: View {
                 
                 Button(action:{
                     UserQueryService().logout()
+                    self.haveBeenDisconnected = true
                     self.connectedPanel.toggle()
                 }){
                     Text("Logout").padding(10).background(Color(.white)).cornerRadius(10)
@@ -37,6 +39,7 @@ struct ReadUserView: View {
                 Button(action: {
                     if UserQueryService().deleteUser(){
                         UserQueryService().logout()
+                        self.haveBeenDisconnected = true
                         self.connectedPanel.toggle()
                     }
                 }) {
