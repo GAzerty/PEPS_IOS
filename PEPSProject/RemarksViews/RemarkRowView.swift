@@ -87,6 +87,7 @@ struct RemarkRowView: View {
                         
                     
                 }.onTapGesture {
+                    print("tap gesture addlike answer")
                     if(UserQueryService().isLogged()){
                         if !RemarkQueryService().addEncounter(remark: self.remark){
                             if RemarkQueryService().removeEncounter(remark: self.remark){

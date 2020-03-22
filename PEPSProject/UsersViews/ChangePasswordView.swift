@@ -28,8 +28,10 @@ struct ChangePasswordView: View {
                 
                 if(self.password1 != ""){
                     if(self.password1 == self.password2){
-                        print("request change password todo")
-                        self.isPresented.toggle()
+                        if UserQueryService().changePassword(password: self.password1){
+                            self.isPresented.toggle()
+                        }
+                        
                     }else{
                         print("error: password not matching")
                     }

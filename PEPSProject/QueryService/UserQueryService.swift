@@ -14,6 +14,11 @@ struct createUserJSON: Codable{
     var password : String
 }
 
+struct changePasswordJSON: Codable{
+    var password : String
+    var token: String
+}
+
 struct credentialsJSON: Codable{
     var user: User?
     var token: String
@@ -151,6 +156,39 @@ class UserQueryService{
             }
         }
         storeUser(token: userToken)
+        return requestDone
+    }
+    
+    
+    func changePassword(password: String) -> Bool{
+        
+        var requestDone : Bool = false
+        
+        var jsonData : Data?
+        do {
+            if let token = getToken(){
+                let changePassword = changePasswordJSON(password: password, token: token)
+                jsonData = try JSONEncoder().encode(changePassword)
+            }
+        } catch {
+            print(error)
+        }
+        
+        var responseDataOpt : [String: Any]?
+        
+        if let user = getUserLogged(){
+            if let idUser = user.idUser{
+                responseDataOpt = QueryService().request(url: "https://web-ios-api.herokuapp.com/users/"+String(idUser), httpMethod: "PUT", httpBody: jsonData)
+            }
+        }
+        
+        if let responseData = responseDataOpt{
+            let message = responseData["message"] as! String
+            if message == "Success"{
+                requestDone = true
+            }
+        }
+        
         return requestDone
     }
     
