@@ -179,9 +179,9 @@
 			children = (
 				8669165F240573FA0029E5AC /* ListRemarksView.swift */,
 				B2927B30240829160077057C /* ResearchBarView.swift */,
-				86F38E58240676C900662E06 /* RemarkRowView.swift */,
 				B2927B3B240967450077057C /* FiltersView.swift */,
 				B2927B42240D09560077057C /* OrderByView.swift */,
+				86F38E58240676C900662E06 /* RemarkRowView.swift */,
 				86183741240D609B0097EAFC /* ReadRemarkView.swift */,
 				864A08F4240D8C57004F2439 /* CreateRemarkView.swift */,
 				86153E922412F0CE002A92BD /* UserRemarksRowView.swift */,
