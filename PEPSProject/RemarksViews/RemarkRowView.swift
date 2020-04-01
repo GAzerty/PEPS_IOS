@@ -28,7 +28,9 @@ struct RemarkRowView: View {
                     }
                     HStack{
                         Image(systemName: "mappin").foregroundColor(Color(.darkGray)).font(.system(size: 15))
-                    Text("\(self.remark.location)").font(Font.system(size: 13.5)).foregroundColor(Color(.darkGray))
+                        Text("\(self.remark.location)").font(Font.system(size: 13.5)).foregroundColor(Color(.darkGray))
+                        Spacer()
+                        Text("\(CategoryQueryService().getCategoryById(idCategory: remark.category)!.lib)").font(Font.system(size: 13.5)).foregroundColor(Color(.darkGray))
                     }
                 }
             }.padding(10)

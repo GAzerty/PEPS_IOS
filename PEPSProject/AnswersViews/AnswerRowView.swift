@@ -21,6 +21,9 @@ struct AnswerRowView: View {
             HStack{
                 Image(systemName: "person.circle").font(.system(size: 19))
                 Text("\(answer.user.pseudo ?? "pseudo")").bold().font(Font.system(size: 20)).foregroundColor(Color(UIColor(red: 104/255, green: 83/255, blue: 163/255, alpha: 1.0)))
+                
+                Spacer()
+                Text("\(CategoryQueryService().getCategoryById(idCategory: answer.category)!.lib)").font(Font.system(size: 13.5)).foregroundColor(Color(.darkGray))
             }.padding(10)
             
             HStack(){

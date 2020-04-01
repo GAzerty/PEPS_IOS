@@ -20,7 +20,7 @@ struct ReadRemarkView: View {
             
             VStack{
                
-            Text("Answsers").font(.largeTitle).foregroundColor(.purple).padding(10)
+            Text("Answers").font(.largeTitle).foregroundColor(.purple).padding(10)
                     Spacer()
                
                 ListAnswersView(answerSet: self.remark.answerSet)
