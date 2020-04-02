@@ -38,7 +38,7 @@ struct AnswerRowView: View {
             HStack{
                 if(isUserAnswers){
                     Spacer()
-                    Image(systemName: "square.and.pencil").foregroundColor(.green).onTapGesture {
+                    Image(systemName: "square.and.pencil").onTapGesture {
                         self.isShown.toggle()
                     }.sheet(isPresented: self.$isShown){
                         CreateAnswerView(isPresented: self.$isShown, answer: self.answer.answer, remark: nil, isUpdateView: true, answerUpdated: self.answer)
